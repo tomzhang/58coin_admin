@@ -12,6 +12,12 @@
 	margin-top: 20px;
     min-height: 500px;
 }
+#dataDisplay{
+	min-height: 700px;
+}
+#data_tab_1{
+	min-height: 550px;
+}
 
 
 .frame_padding {

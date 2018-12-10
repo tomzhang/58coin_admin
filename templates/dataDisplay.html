@@ -5,7 +5,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>数据展示</title>
 	<script type="text/javascript" src="../static/layui.js"></script>
-	<script type="text/javascript" src="../static/admin.js"></script>
 	<link rel="stylesheet" href="../static/admin.css" media="all">
 </head>
 <body class="frame_padding">
@@ -18,169 +17,60 @@
 	<div class="layui-tab">
 		<!-- 一级tab切换 -->
 		<ul class="layui-tab-title tab_title">
-			<li class="layui-btn layui-btn-primary layui-this">币币交易</li>
-			<li class="layui-btn layui-btn-primary">数字合约</li>
-			<li class="layui-btn layui-btn-primary">USDT合约</li>
+			<li class="layui-btn layui-btn-primary layui-this tab_data">币币交易</li>
+			<li class="layui-btn layui-btn-primary tab_data">数字合约</li>
+			<li class="layui-btn layui-btn-primary tab_data">USDT合约</li>
 		</ul>
-		<!-- 一级tab详情 -->
-		<div class="layui-tab-content">
-			<!-- 币币交易 -->
-			<div class="layui-tab-item layui-show">
-				<div class="layui-tab">
-					<!-- 二级tab切换 -->
-					<ul class="layui-tab-title tab_title tab_second_title">
-						<li class="layui-btn layui-btn-primary layui-this">下单记录</li>
-						<li class="layui-btn layui-btn-primary">成交记录</li>
-						<li class="layui-btn layui-btn-primary">资金记录</li>
-					</ul>
-					<div class="div_line"></div>
-					<div class="layui-tab-content">
-						<!-- 二级tab切换详情 -->
-						<div class="layui-tab-item layui-show">
-							<form class="layui-form layui-form-pane" action="">
-								<div class="layui-form-item layui-inline">
-									<label class="layui-form-label time">时间</label>
-									<div class="layui-input-inline time">
-										<select id="time" name="time">
-											<option value="">请选择</option>
-											<option value="0" selected="">今天</option>
-											<option value="1">昨天</option>
-											<option value="2">明天</option>
-										</select>
-									</div>
-								</div>
-								<div class="layui-form-item layui-inline">
-									<div class="layui-input-inline time_range">
-										<input type="text" name="date" id="date_range" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-									</div>
-								</div>
-								<div class="layui-form-item layui-inline">
-									<label class="layui-form-label user_id"><span style="color: red;">*</span>用户ID</label>
-									<div class="layui-input-inline">
-										<input type="text" name="name" lay-verify="name" placeholder="用户ID" autocomplete="off" class="layui-input">
-									</div>
-								</div>
-								<div class="layui-form-item layui-inline">
-									<label class="layui-form-label display_select_more">币对选择：</label>
-									<div class="layui-input-inline" style="width: 200px;">
-										<select xm-select="select_more" name="carrucy">
-											<option value="">全部</option>
-											<option value="0">BTC</option>
-											<option value="1">ETH</option>
-											<option value="2">EOS</option>
-										</select>
-									</div>
-								</div>
-								<div class="layui-form-item layui-inline more_options">
-									<button class="layui-btn layui-btn-normal">查询</button>
-									<button class="layui-btn layui-btn-primary">导出</button>
-								</div>
-							</form>
-							<table class="layui-table">
-							  <colgroup>
-							    <col width="70">
-							    <col width="100">
-							    <col width="150">
-							    <col width="170">
-							    <col width="170">
-							    <col width="170">
-							    <col width="170">
-							    <col width="170">
-							    <col width="170">
-							    <col width="170">
-							    <col width="150">
-							    <col width="150">
-							    <col width="170">
-							    <col width="200">
-							    <col width="150">
-							    <col width="170">
-							    <col width="200">
-							  </colgroup>
-							  <!-- 序号 成交单id 品种 类型 方向 成交价格 成交量 成交时间 成交金额 订单状态 流动性 手续费 对手ID 下单ID 下单时间 下单价格 下单数量 -->
-							  <thead>
-							    <tr>
-							      <th>序号</th>
-							      <th>成交单id</th>
-							      <th>品种</th>
-							      <th>类型</th>
-							      <th>方向</th>
-							      <th>成交价格</th>
-							      <th>成交量</th>
-							      <th>成交时间</th>
-							      <th>成交金额</th>
-							      <th>订单状态</th>
-							      <th>流动性</th>
-							      <th>手续费</th>
-							      <th>对手ID</th>
-							      <th>下单ID</th>
-							      <th>下单时间</th>
-							      <th>下单价格</th>
-							      <th>下单数量</th>
-							    </tr> 
-							  </thead>
-							  <tbody>
-							    <tr>
-							      <td>1</td>
-							      <td>USDTBTC</td>
-							      <td>123</td>
-							      <td>123</td>
-							      <td>123</td>
-							      <td>234</td>
-							      <td>123</td>
-							      <td>123</td>
-							      <td>123</td>
-							      <td>234</td>
-							      <td>关闭</td>
-							      <td>某某某</td>
-							      <td>235</td>
-							      <td>234</td>
-							      <td>关闭</td>
-							      <td>某某某</td>
-							      <td>235</td>
-							    </tr>
-							    <tr>
-							      <td>1</td>
-							      <td>USDTBTC</td>
-							      <td>123</td>
-							      <td>123</td>
-							      <td>123</td>
-							      <td>234</td>
-							      <td>123</td>
-							      <td>123</td>
-							      <td>123</td>
-							      <td>234</td>
-							      <td>关闭</td>
-							      <td>某某某</td>
-							      <td>235</td>
-							      <td>234</td>
-							      <td>关闭</td>
-							      <td>某某某</td>
-							      <td>235</td>
-							    </tr>
-							  </tbody>
-							</table>
-							<!-- 分页 -->
-							<div id="pagation"></div>
-						</div>
-						<div class="layui-tab-item">
-							成交记录
-						</div>
-						<div class="layui-tab-item">
-							资金记录
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- 数字合约 -->
-			<div class="layui-tab-item">
-				数字合约
-			</div>
-			<!-- USDT合约 -->
-			<div class="layui-tab-item">
-				USDT合约
-			</div>
-		</div>
+
+		<iframe id="dataDisplay" src="./dataDisplay/tab_1.html" frameborder="0" width="100%" height="100%"></iframe>
+
 	</div>
+
+
+<script type="text/javascript">
+	layui.config({
+		base: '../static/lay/modules/'
+	}).extend({
+		formSelects: 'formSelects'
+	})
+	layui.use(['jquery', 'layer', 'element', 'form', 'laydate', 'table', 'laypage', 'formSelects'], function(){
+		let $ = layui.$,
+			layer = layui.layer,
+			element = layui.element,
+			form = layui.form,
+			laydate = layui.laydate,
+			table = layui.table,
+			laypage = layui.laypage,
+			formSelects = layui.formSelects;
+
+		let $frame = document.getElementsByTagName("iframe")[0];
+
+		$(function () {
+			$('.tab_data').on('click', function(event) {
+				event.preventDefault();
+				let index = $(this).index();
+				switch(index) {
+					case 0:
+						// 币币交易
+						$frame.src = './dataDisplay/tab_1.html';
+						break;
+					case 1:
+						// 数字合约
+						$frame.src = './dataDisplay/tab_2.html';
+						break;
+					case 2:
+						// USDT合约
+						$frame.src = './dataDisplay/tab_3.html';
+						break;
+				}
+			});
+		})
+
+
+	})
+</script>
+
+
 	
 </body>
 </html>
