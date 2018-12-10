@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>审核</title>
-    <script type="text/javascript" src="../static/layui.js"></script>
-    <link rel="stylesheet" href="../static/admin.css" media="all">
+    <script type="text/javascript" src="../../../static/layui.js"></script>
+    <link rel="stylesheet" href="../../../static/admin.css" media="all">
 </head>
 
 <body>
@@ -139,11 +139,55 @@
             </div>
         </div>
         <div class="layui-form-item layui-form-text" style="text-align: center;margin-top: 30px;">
-            <button class="layui-btn">通过</button>
-		    <button class="layui-btn layui-btn-primary">不通过</button>
-		    <button class="layui-btn layui-btn-primary">取消</button>
+            <button class="layui-btn btn_promit">通过</button>
+		    <button class="layui-btn layui-btn-primary btn_no_promit">不通过</button>
+		    <button class="layui-btn layui-btn-primary btn_cancel">取消</button>
         </div>
     </div>
+
+<script type="text/javascript">
+    layui.config({
+        base: '../../static/lay/modules/'
+    }).extend({
+        formSelects: 'formSelects'
+    })
+    layui.use(['jquery', 'layer', 'element', 'form', 'laydate', 'table', 'laypage', 'formSelects'], function(){
+        let $ = layui.$,
+            layer = layui.layer,
+            element = layui.element,
+            form = layui.form,
+            laydate = layui.laydate,
+            table = layui.table,
+            laypage = layui.laypage,
+            formSelects = layui.formSelects;
+
+        let host = 'http://' + window.location.host + '/templates/';
+
+        $(function () {
+            // 通过
+            $(document).on('click', '.btn_promit', function (e) {
+                e.preventDefault();
+                console.log('通过');
+            })
+
+            // 不通过
+            $(document).on('click', '.btn_no_promit', function (e) {
+                e.preventDefault();
+                console.log('不通过');
+            })
+
+            // 取消
+            $(document).on('click', '.btn_cancel', function (e) {
+                e.preventDefault();
+                console.log('取消');
+            })
+
+        })
+        
+
+    })
+</script>
+
 </body>
 
 </html>

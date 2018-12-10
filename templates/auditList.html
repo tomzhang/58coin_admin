@@ -191,6 +191,8 @@
 			table = layui.table,
 			laypage = layui.laypage,
 			formSelects = layui.formSelects;
+		
+		let host = 'http://' + window.location.host + '/templates/';
 
 		//日期
 		laydate.render({
@@ -213,13 +215,13 @@
 			// 审核
 			$(document).on('click', '.btn_examine', function (e) {
 				e.preventDefault();
-				$('body').load('../templates/auditList/examineDetail.html');
+				window.location.href = host + 'auditList/examineDetail.html';
 			})
 
 			// 查看
 			$(document).on('click', '.layui-href', function (e) {
 				e.preventDefault();
-				$('body').load('../templates/auditList/auditListDetail.html');
+				window.location.href = host + 'auditList/auditListDetail.html';
 			})
 
 		})

@@ -4,9 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>审核列表详情</title>
-	<script type="text/javascript" src="../static/layui.js"></script>
-	<script type="text/javascript" src="../static/admin.js"></script>
-	<link rel="stylesheet" href="../static/admin.css" media="all">
+    <script type="text/javascript" src="../../../static/layui.js"></script>
+    <link rel="stylesheet" href="../../../static/admin.css" media="all">
 </head>
 <body>
 	<!-- 标题 -->
@@ -112,7 +111,47 @@
 		    </tr>
 		  </tbody>
 		</table>
+		<!-- 加载更多 -->
+    	<button class="layui-btn layui-btn-primary load_more">加载更多</button>
 	</div>
+
+<script type="text/javascript">
+    layui.config({
+        base: '../../static/lay/modules/'
+    }).extend({
+        formSelects: 'formSelects'
+    })
+    layui.use(['jquery', 'layer', 'element', 'form', 'laydate', 'table', 'laypage', 'formSelects'], function(){
+        let $ = layui.$,
+            layer = layui.layer,
+            element = layui.element,
+            form = layui.form,
+            laydate = layui.laydate,
+            table = layui.table,
+            laypage = layui.laypage,
+            formSelects = layui.formSelects;
+
+
+    	let host = 'http://' + window.location.host + '/templates/';
+
+
+        $(function () {
+        	// 查看详情 
+        	$(document).on('click', '.go_detail', function(event) {
+        		event.preventDefault();
+        		window.location.href = host + 'examineDetail.html';
+        	});
+
+            // 记载更多
+            $(document).on('click', '.load_more', function(event) {
+        		event.preventDefault();
+        		console.log('记载更多');
+        	});
+        })
+        
+
+    })
+</script>
 	
 </body>
 </html>
