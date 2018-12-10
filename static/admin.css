@@ -1,6 +1,10 @@
 @import url('./css/layui.css');
 @import url('./css/formSelects.css');
 
+#frame_body{
+	padding: 15px;
+}
+
 .layui-table th, .layui-table tr.keep_all{
     word-break: keep-all;
     white-space: nowrap;
@@ -324,6 +328,7 @@
 
 .total_right{
 	float: right;
+	padding-right: 35px;
 }
 
 

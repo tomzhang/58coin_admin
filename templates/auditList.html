@@ -151,7 +151,7 @@
 	      <td>2018-09-09 12:12:12</td>
 	      <td>显示最新一条</td>
 	      <td>
-			<a href="javascript:;" class="layui-btn-xs btn_examine layui-href" title="">查看</a>
+			<a href="javascript:;" class="layui-btn-xs layui-href" title="">查看</a>
 	      </td>
 	      <tr class="keep_all">
 	      <td>1</td>
@@ -191,6 +191,40 @@
 			table = layui.table,
 			laypage = layui.laypage,
 			formSelects = layui.formSelects;
+
+		//日期
+		laydate.render({
+			elem: '#date_range',
+			range: true,
+			done: function(value, date){
+				let type = date.year;
+			    // 禁用select
+			    if (!!type) {
+			    	$('#time').attr('disabled', 'disabled');
+					form.render('select');
+			    } else {
+			    	$('#time').removeAttr('disabled');
+					form.render('select');
+			    }
+			}
+		});
+
+		$(function () {
+			// 审核
+			$(document).on('click', '.btn_examine', function (e) {
+				e.preventDefault();
+
+			})
+
+			// 查看
+			$(document).on('click', '.layui-href', function (e) {
+				e.preventDefault();
+				$('body').load('../templates/auditListDetail.html');
+			})
+
+		})
+		
+
 	})
 </script>
 
