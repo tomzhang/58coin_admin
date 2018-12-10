@@ -38,8 +38,7 @@
 			</div>
 		</div>
 		<div class="layui-form-item layui-inline">
-			<input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" title="隐藏为0的币种">
-			<span class="hide_carrucy">隐藏为0的币种</span>
+			<input type="checkbox" name="like1[read]" lay-skin="primary" title="隐藏为0的币种">
 		</div>
 		<div class="layui-form-item layui-inline" style="float: right;">
 			<button class="layui-btn layui-btn-normal">查询</button>
@@ -226,6 +225,12 @@
 				event.preventDefault();
 				$('.detail_list').show();
 			});	
+
+			// 表单提交
+			$('.layui-btn-normal').on('click', function(event) {
+				event.preventDefault();
+				$('form').submit();
+			});
 		})
 
 	})

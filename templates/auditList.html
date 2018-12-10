@@ -224,6 +224,12 @@
 				window.location.href = host + 'auditList/auditListDetail.html';
 			})
 
+			// 搜索
+			$('.layui-btn-normal').on('click', function(event) {
+				event.preventDefault();
+				$('form').submit();
+			});
+
 		})
 		
 

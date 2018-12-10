@@ -9,7 +9,7 @@
 </head>
 <body>
 	<!-- 新增/编辑币币弹框 -->
-	<div class="dialog_modal_body add_set">
+	<form class="dialog_modal_body add_set">
 		<div class="layui-form">
 			<div class="layui-form-item">
 				<div class="layui-inline">
@@ -92,7 +92,7 @@
 		<div class="dialog_modal_notice">
 			注：该设置生效后，范围内的用户将自动提币
 		</div>	
-	</div>
+	</form>
 	<div class="dialog_modal_footer">
 		<button class="layui-btn dialog_btn_promit">确定</button>
 	    <button class="layui-btn layui-btn-primary dialog_btn_close">取消</button>
@@ -132,6 +132,12 @@
 			$('.dialog_btn_close').on('click', function(event) {
 				event.preventDefault();
 				console.log('取消', type);
+			});
+
+			// 表单提交
+			$('.dialog_btn_promit').on('click', function(event) {
+				event.preventDefault();
+				$('form').submit();
 			});
 
 
