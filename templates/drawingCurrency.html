@@ -219,6 +219,23 @@
 
 		let $frame = document.getElementsByTagName("iframe")[0];
 
+		//日期
+		laydate.render({
+			elem: '#date_range',
+			range: true,
+			done: function(value, date){
+				let type = date.year;
+			    // 禁用select
+			    if (!!type) {
+			    	$('#time').attr('disabled', 'disabled');
+					form.render('select');
+			    } else {
+			    	$('#time').removeAttr('disabled');
+					form.render('select');
+			    }
+			}
+		});
+
 		$(function () {
 			// 提币统计-查看详情
 			$(document).on('click', '.opration_look', function(event) {
