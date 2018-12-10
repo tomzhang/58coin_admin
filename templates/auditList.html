@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>审核列表</title>
+	<script type="text/javascript" src="../static/layui.js"></script>
+	<link rel="stylesheet" href="../static/admin.css" media="all">
+</head>
+<body>
+	<!-- 标题 -->
+	<fieldset class="layui-elem-field layui-field-title">
+	  <legend>审核列表</legend>
+	</fieldset>
+
+	<!-- 搜索条件 -->
+	<form class="layui-form layui-form-pane" action="">
+		<div class="layui-form-item layui-inline">
+			<label class="layui-form-label time">时间</label>
+			<div class="layui-input-inline time">
+				<select id="time" name="time">
+					<option value="">请选择</option>
+					<option value="0" selected="">今天</option>
+					<option value="1">昨天</option>
+					<option value="2">明天</option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-form-item layui-inline">
+			<div class="layui-input-inline time_range">
+				<input type="text" name="date" id="date_range" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item layui-inline">
+			<label class="layui-form-label user_id">用户ID</label>
+			<div class="layui-input-inline">
+				<input type="text" name="name" lay-verify="name" placeholder="用户ID" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item layui-inline">
+			<label class="layui-form-label user_id">手机号</label>
+			<div class="layui-input-inline">
+				<input type="text" name="phone" lay-verify="phone" placeholder="请输入后四位" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item layui-inline">
+			<label class="layui-form-label user_id">风控组</label>
+			<div class="layui-input-inline time">
+				<select id="time" name="time">
+					<option value="">请选择</option>
+					<option value="0" selected="">风控组1</option>
+					<option value="1">风控组2</option>
+					<option value="2">风控组3</option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-form-item layui-inline">
+			<label class="layui-form-label time">客服</label>
+			<div class="layui-input-inline time">
+				<select id="time" name="time">
+					<option value="">请选择</option>
+					<option value="0" selected="">客服1</option>
+					<option value="1">客服2</option>
+					<option value="2">客服3</option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-form-item layui-inline">
+			<label class="layui-form-label time">状态</label>
+			<div class="layui-input-inline time">
+				<select id="time" name="time">
+					<option value="">请选择</option>
+					<option value="0" selected="">状态1</option>
+					<option value="1">状态2</option>
+					<option value="2">状态3</option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-form-item layui-inline">
+			<button class="layui-btn layui-btn-normal">搜索</button>
+		</div>
+	</form>
+
+	<!-- 返回结果 -->
+	<div class="result-list">
+		<ul>
+			<li class="layui-text">已申请：1203条</li>
+			<li class="layui-text">自动提币：300条</li>
+			<li class="layui-text">风控组待处理：200条</li>
+			<li class="layui-text">客服待处理：100条</li>
+			<li class="layui-text">已处理：900条</li>
+		</ul>
+	</div>
+
+	<!-- 审核列表 -->
+	<table class="layui-table">
+	  <!-- 序号 客户ID 手机号 提现数量 申请时间 灰名单 敏感操作 数额检测 阈值检测 风控组处理结果 客服组处理结果 最终状态 最新操作时间 备注 操作 -->
+	  <thead>
+	    <tr>
+	      <th>序号</th>
+	      <th>客户ID</th>
+	      <th>手机号</th>
+	      <th>提现数量</th>
+	      <th>申请时间</th>
+	      <th>灰名单</th>
+	      <th>敏感操作</th>
+	      <th>数额检测</th>
+	      <th>阈值检测</th>
+	      <th>风控组处理结果</th>
+	      <th>客服组处理结果</th>
+	      <th>最终状态</th>
+	      <th>最新操作时间</th>
+	      <th>备注</th>
+	      <th>操作</th>
+	    </tr> 
+	  </thead>
+	  <tbody>
+	  	<!-- 1 10000 187****6621 10BTC 2018-09-09 12:12:12 无 无 正常 异常 已通过 已通过 已通过 2018-09-09 12:12:12 显示最新一条 已审核 -->
+	    <tr class="keep_all">
+	      <td>1</td>
+	      <td>10000</td>
+	      <td>187****6621</td>
+	      <td>10BTC</td>
+	      <td>2018-09-09 12:12:12</td>
+	      <td>无</td>
+	      <td>无</td>
+	      <td>正常</td>
+	      <td>异常</td>
+	      <td>已通过</td>
+	      <td>已通过</td>
+	      <td>已通过</td>
+	      <td>2018-09-09 12:12:12</td>
+	      <td>显示最新一条</td>
+	      <td>
+			<a href="javascript:;" class="layui-btn layui-btn-xs btn_examine" title="">审核</a>
+	      </td>
+	    </tr>
+	    <tr class="keep_all">
+	      <td>1</td>
+	      <td>10000</td>
+	      <td>187****6621</td>
+	      <td>10BTC</td>
+	      <td>2018-09-09 12:12:12</td>
+	      <td>无</td>
+	      <td>无</td>
+	      <td>正常</td>
+	      <td>异常</td>
+	      <td>已通过</td>
+	      <td>已通过</td>
+	      <td>已通过</td>
+	      <td>2018-09-09 12:12:12</td>
+	      <td>显示最新一条</td>
+	      <td>
+			<a href="javascript:;" class="layui-btn-xs btn_examine layui-href" title="">查看</a>
+	      </td>
+	      <tr class="keep_all">
+	      <td>1</td>
+	      <td>10000</td>
+	      <td>187****6621</td>
+	      <td>10BTC</td>
+	      <td>2018-09-09 12:12:12</td>
+	      <td>无</td>
+	      <td>无</td>
+	      <td>正常</td>
+	      <td>异常</td>
+	      <td>已通过</td>
+	      <td>已通过</td>
+	      <td>已通过</td>
+	      <td>2018-09-09 12:12:12</td>
+	      <td>显示最新一条</td>
+	      <td>
+			已审核
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
+
+
+<script type="text/javascript">
+	layui.config({
+		base: '../static/lay/modules/'
+	}).extend({
+		formSelects: 'formSelects'
+	})
+	layui.use(['jquery', 'layer', 'element', 'form', 'laydate', 'table', 'laypage', 'formSelects'], function(){
+		let $ = layui.$,
+			layer = layui.layer,
+			element = layui.element,
+			form = layui.form,
+			laydate = layui.laydate,
+			table = layui.table,
+			laypage = layui.laypage,
+			formSelects = layui.formSelects;
+	})
+</script>
+
+</body>
+
+</html>

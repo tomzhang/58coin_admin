@@ -1,0 +1,342 @@
+@import url('./css/layui.css');
+@import url('./css/formSelects.css');
+
+.layui-table th, .layui-table tr.keep_all{
+    word-break: keep-all;
+    white-space: nowrap;
+}
+
+.layui-logo{
+	background: url('./images/58COIN_wc.png') center no-repeat;
+	width: 336px;
+	height: 96px;
+	background-size: 70%;
+}
+
+.layui-layout-admin .layui-body{
+	bottom: 0;
+}
+
+.item-user {
+	font-size: 16px;
+	color: #fff;
+}
+.item-user span{
+	margin-left: 5px;
+}
+.layui-form-item .layui-input-inline{
+	width: 120px;
+}
+.layui-form-pane .layui-form-label.time{
+	width: 70px;
+	background: none;
+	border: none;
+}
+.layui-form-item .layui-input-inline.time{
+	width: 100px;
+}
+.layui-form-item .layui-input-inline.time_range{
+	width: 170px;
+}
+.layui-form-pane .layui-form-label.user_id{
+	width: 80px;
+	background: none;
+	border: none;
+}
+
+.result-list{
+	width: 100%;
+}
+.result-list ul{
+	overflow: hidden;
+	padding-left: 20px;
+}
+.result-list ul li {
+	float: left;
+	margin-right: 20px;
+}
+
+
+/* 提币审核弹框 */
+.examine-class{
+	min-width: 800px;
+}
+.layui-form-mid{
+	font-size: 16px;
+	color: #555;
+}
+.layui-form-label.dialog{
+	color: #444;
+}
+.dialog_margin_bottom{
+	margin-bottom: 0;
+}
+.dialog_red{
+	color: red;
+}
+.width_50{
+	width: 45%;
+}
+.dialog_label_width {
+	width: 100px;
+	text-align-last: right;
+}
+.layui-input-block.dialog_margin_left{
+	margin-left: 130px;
+}
+.dialog_blod{
+	font-weight: 700;
+}
+.dialog_gray{
+	color: #777;
+}
+.dialog_gray span{
+	margin-right: 30px;
+}
+
+.layui-href{
+	color: #1E9FFF;
+}
+.layui-href:hover{
+	color: #1E9FFF;
+	text-decoration: underline;
+}
+
+
+.layui-tab{
+	position: relative;
+}
+.btn_add_set{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.layui-tab-title.tab_title{
+	height: 38px;
+	overflow: hidden;
+	border: none;
+}
+.layui-tab-title.tab_title li{
+	height: 38px;
+    line-height: 38px;
+}
+.layui-tab-title.tab_title .layui-this{
+	display: inline-block;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    background-color: #009688;
+    color: #fff;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.result-list.tab_result{
+	padding: 10px 0px;
+	padding-bottom: 0;
+}
+.result-list.tab_result ul{
+	padding-left: 0px;
+}
+.opration_open, .opration_edit, .opration_delete {
+	margin-right: 5px;
+}
+.opration_open:hover, .opration_edit:hover, .opration_delete:hover, .opration_copy:hover, .opration_look:hover{
+	text-decoration: underline;
+}
+.opration_open, .opration_open:hover{
+	color: #009688;
+}
+.opration_edit, .opration_edit:hover{
+	color: #1E9FFF;
+}
+
+.opration_delete, .opration_delete:hover{
+	color: #FF5722;
+}
+.opration_copy, .opration_copy:hover, .opration_look, .opration_look:hover{
+	color: #009688;
+}
+
+#pagation{
+	text-align: right;
+}
+
+.opration_log{
+
+}
+.opration_log_title{
+	font-size: 16px;
+	font-weight: 500;
+	color: #777;
+}
+
+.opration_log_list{
+	margin-top: 10px;
+}
+.opration_log_list ul{
+	padding-left: 20px;
+}
+.opration_log_list ul li{
+	font-size: 14px;
+	color: #666;
+	padding-bottom: 10px;
+}
+
+/* 弹框 */
+.dialog_modal{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, .2);
+	z-index: 1;
+}
+.dialog_modal_fix{
+	display:flex;
+    justify-content:center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+.dialog_modal_container{
+	width: 700px;
+	min-height: 400px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 15px #868383;
+	position: relative;
+}
+.dialog_modal_header{
+	width: 100%;
+	height: 50px;
+	position: relative;
+	border-bottom: 1px solid #fafafa;
+	line-height: 55px;
+	text-align-last: center;
+	font-size: 16px;
+	color: #000;
+}
+.dialog_modal_close{
+	display: block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	color: #777;
+	cursor: pointer;
+}
+.dialog_modal_body{
+	min-height: 320px;
+	padding: 20px;
+	padding-bottom: 80px;
+}
+.dialog_modal_body .layui-form-item .layui-input-inline{
+	width: 170px;
+	position: relative;
+}
+.dialog_modal_body .layui-form-item .layui-input-inline input{
+	padding-right: 40px;
+}
+.dialog_modal_body .layui-form-item .layui-input-inline .bot{
+	display: block;
+	padding: 0px 10px;
+	height: 38px;
+	line-height: 38px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: #777;
+}
+.dialog_modal_body .layui-form-item .layui-form-label{
+	width: 100px;
+}
+.dialog_modal_footer{
+	width: 100%;
+	height: 80px;
+	line-height: 60px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+}
+.dialog_modal_notice{
+	padding-left: 50px;
+	color: red;
+}
+
+.delete_dialog{
+	width: 200px;
+}
+
+.hide_carrucy{
+    color: #666;
+    margin-left: 5px;
+    margin-top: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.layui-tab-title.tab_title.tab_second_title{
+	height: 30px;
+	overflow: hidden;
+}
+.layui-tab-title.tab_title.tab_second_title li{
+	height: 30px;
+	line-height: 30px;
+}
+.div_line{
+	height: 1px;
+	margin: 10px 0px 5px 0px;
+	background: #f0f0f0;
+}
+
+.layui-form-pane .layui-form-label.display_select_more{
+	width: 100px;
+	border: none;
+	background: none;
+}
+.more_options{
+	float: right;
+}
+
+.go_list, .go_list:hover{
+	cursor: pointer;
+	color: #1E9FFF;
+}
+.go_detail{
+	cursor: pointer;
+	color: #1E9FFF;
+}
+.go_detail:hover{
+	cursor: pointer;
+	color: #1E9FFF;
+	text-decoration: underline;
+}
+
+.total_right{
+	float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
