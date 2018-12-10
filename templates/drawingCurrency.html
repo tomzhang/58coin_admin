@@ -5,7 +5,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>提币统计</title>
 	<script type="text/javascript" src="../static/layui.js"></script>
-	<script type="text/javascript" src="../static/admin.js"></script>
 	<link rel="stylesheet" href="../static/admin.css" media="all">
 </head>
 <body class="frame_padding">
@@ -203,6 +202,34 @@
 		</div>
 	</div>
 
+<script type="text/javascript">
+	layui.config({
+		base: '../static/lay/modules/'
+	}).extend({
+		formSelects: 'formSelects'
+	})
+	layui.use(['jquery', 'layer', 'element', 'form', 'laydate', 'table', 'laypage', 'formSelects'], function(){
+		let $ = layui.$,
+			layer = layui.layer,
+			element = layui.element,
+			form = layui.form,
+			laydate = layui.laydate,
+			table = layui.table,
+			laypage = layui.laypage,
+			formSelects = layui.formSelects;
+
+		let $frame = document.getElementsByTagName("iframe")[0];
+
+		$(function () {
+			// 提币统计-查看详情
+			$(document).on('click', '.opration_look', function(event) {
+				event.preventDefault();
+				$('.detail_list').show();
+			});	
+		})
+
+	})
+</script>
 	
 </body>
 </html>

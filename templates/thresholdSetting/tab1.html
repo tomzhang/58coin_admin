@@ -116,6 +116,25 @@
 				  console.log(obj)
 				}
 			});
+
+			// 删除当前数据弹框
+			$(document).on('click', '.opration_delete', function(event) {
+				event.preventDefault();
+				layer.open({
+					title: '删除',
+					skin: 'delete_dialog',
+					content: '确认删除当前数据！',
+					btn: ['删除', '取消'],
+					yes: function(index, layero){
+						$('.layui-layer-close').trigger('click');
+						// 删除操作
+					},
+					btn2: function () {
+						// 取消操作
+					}
+				});
+				$('.layui-layer-shade').css('background', 'none');
+			});
 				
 		})
 

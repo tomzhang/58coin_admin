@@ -8,6 +8,11 @@
 	margin-top: 20px;
     min-height: 600px;
 }
+#addSet{
+	margin-top: 20px;
+    min-height: 500px;
+}
+
 
 .frame_padding {
 	padding: 15px;
@@ -341,6 +346,14 @@
 .total_right{
 	float: right;
 	padding-right: 35px;
+}
+
+.dialog_modal_body .layui-form-item .layui-input-inline.add_set_4{
+	width: 450px;
+}
+
+.dialog_modal_body .layui-form-item .layui-form-label.add_set_4{
+	width: 150px;
 }
 
 

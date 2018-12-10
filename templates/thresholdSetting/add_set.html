@@ -8,79 +8,9 @@
 	<link rel="stylesheet" href="../../static/admin.css" media="all">
 </head>
 <body>
-	<!-- 新增/编辑币币弹框 -->
-	<div class="dialog_modal_body add_set">
-		<div class="layui-form">
-			<div class="layui-form-item">
-				<div class="layui-inline">
-					<label class="layui-form-label">币对选择：</label>
-					<div class="layui-input-inline">
-						<select xm-select="select_more" name="carrucy">
-							<option value="">全部</option>
-							<option value="0">BTC</option>
-							<option value="1">ETH</option>
-							<option value="2">EOS</option>
-						</select>
-					</div>
-				</div>
-				<div class="layui-inline">
-					<label class="layui-form-label">单日成交次数：</label>
-					<div class="layui-input-inline">
-						<input type="text" name="number" autocomplete="off" class="layui-input">
-						<span class="bot">次</span>
-					</div>
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<div class="layui-inline">
-					<label class="layui-form-label">单日成交量：</label>
-					<div class="layui-input-inline">
-						<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
-						<span class="bot">BTC</span>
-					</div>
-				</div>
-				<div class="layui-inline">
-					<label class="layui-form-label">单日下单次数：</label>
-					<div class="layui-input-inline">
-						<input type="text" name="number" autocomplete="off" class="layui-input">
-						<span class="bot">次</span>
-					</div>
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<div class="layui-inline">
-					<label class="layui-form-label">下单时间间隔：</label>
-					<div class="layui-input-inline">
-						<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
-						<span class="bot">S</span>
-					</div>
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<div class="layui-inline">
-					<label class="layui-form-label">累计收益率：</label>
-					<div class="layui-input-inline">
-						<input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
-						<span class="bot">%</span>
-					</div>
-				</div>
-				<div class="layui-inline">
-					<label class="layui-form-label">累计收益量：</label>
-					<div class="layui-input-inline">
-						<input type="text" name="number" autocomplete="off" class="layui-input">
-						<span class="bot">BTC</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="dialog_modal_notice">
-			注：该设置生效后，范围内的用户将自动提币
-		</div>	
-	</div>
-	<div class="dialog_modal_footer">
-		<button class="layui-btn dialog_btn_promit">确定</button>
-	    <button class="layui-btn layui-btn-primary dialog_btn_close">取消</button>
-	</div>
+
+	<iframe id="addSet" src="" frameborder="0" width="100%" height="100%"></iframe>
+	
 
 <script type="text/javascript">
 	layui.config({
@@ -98,26 +28,14 @@
 			laypage = layui.laypage,
 			formSelects = layui.formSelects;
 
-		// 多选
-		formSelects.render('select_more');
-		formSelects.btns('select_more', []);
+		let $frame = document.getElementsByTagName("iframe")[0];
+		let type = parent.document.getElementById("thresholdSetting").contentWindow.location.search.split('=')[1];
 
 		$(function () {
-			// type为类型，0，1，2，3 对应的是四个tab页签
-			let type = parent.document.getElementById("thresholdSetting").contentWindow.location.search.split('=')[1] ;
-			// 确定
-			$('.dialog_btn_promit').on('click', function(event) {
-				event.preventDefault();
-				console.log('确定', type);
-			});
-
-			// 取消
-			$('.dialog_btn_close').on('click', function(event) {
-				event.preventDefault();
-				console.log('取消', type);
-			});
-
-
+			// 判断加载哪个form表单
+			let index = Number(type) + 1;
+			let url = '../addSet/add_set_' + index + '.html?type=' + type;
+			$frame.src = url;
 		})
 
 	})
