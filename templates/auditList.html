@@ -213,13 +213,13 @@
 			// 审核
 			$(document).on('click', '.btn_examine', function (e) {
 				e.preventDefault();
-
+				$('body').load('../templates/auditList/examineDetail.html');
 			})
 
 			// 查看
 			$(document).on('click', '.layui-href', function (e) {
 				e.preventDefault();
-				$('body').load('../templates/auditListDetail.html');
+				$('body').load('../templates/auditList/auditListDetail.html');
 			})
 
 		})
