@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>数字合约</title>
+	<script type="text/javascript" src="../../static/layui.js"></script>
+	<link rel="stylesheet" href="../../static/admin.css" media="all">
+</head>
+<body>
+
+	<!-- 显示结果 -->
+	<div class="result-list tab_result">
+		<!-- 今日申请：1000条     今日自动提币已通过：600条   历史申请：1000条   历史自动提币已通过：600条      -->
+		<ul>
+			<li class="layui-text">今日申请：1000条</li>
+			<li class="layui-text">今日自动提币已通过：600条</li>
+			<li class="layui-text">历史申请：1000条</li>
+			<li class="layui-text">历史自动提币已通过：600条</li>
+			<li class="layui-text">累计收益率：90%</li>
+			<li class="layui-text">累计收益量：100BTC</li>
+		</ul>
+	</div>
+	<div class="layui-tab-content">
+		<!-- 币币 -->
+		<div class="layui-tab-item layui-show">
+			<table class="layui-table">
+			  <thead>
+			    <tr>
+			      <th>序号</th>
+			      <th>币对</th>
+			      <th>单日成交量</th>
+			      <th>单日成交次数</th>
+			      <th>单日下单次数</th>
+			      <th>累计收益率</th>
+			      <th>累计收益量</th>
+			      <th>单笔收益率</th>
+			      <th class="dialog_red">下单时间间隔</th>
+			      <th>指数偏差率</th>
+			      <th>当前状态</th>
+			      <th>设置人</th>
+			      <th>设置时间</th>
+			      <th>操作</th>
+			    </tr> 
+			  </thead>
+			  <tbody>
+			    <tr class="keep_all">
+			      <td>1</td>
+			      <td>USDTBTC</td>
+			      <td>123</td>
+			      <td>123</td>
+			      <td>123</td>
+			      <td>234</td>
+			      <td>123</td>
+			      <td>123</td>
+			      <td class="dialog_red">123</td>
+			      <td>234</td>
+			      <td>关闭</td>
+			      <td>某某某</td>
+			      <td>2018-09-12 10:10:18</td>
+			      <td>
+			      	<a class="opration_open" href="javascript:;" title="">启用</a>
+			      	<a class="opration_edit" href="javascript:;" title="">修改</a>
+			      	<a class="opration_delete" href="javascript:;" title="">删除</a>
+			      </td>
+			    </tr>
+			    <tr class="keep_all">
+			      <td>1</td>
+			      <td>USDTBTC</td>
+			      <td>123</td>
+			      <td>123</td>
+			      <td>123</td>
+			      <td>234</td>
+			      <td>123</td>
+			      <td>123</td>
+			      <td class="dialog_red">123</td>
+			      <td>234</td>
+			      <td>关闭</td>
+			      <td>某某某</td>
+			      <td>2018-09-12 10:10:18</td>
+			      <td>
+			      	<a class="opration_copy" href="javascript:;" title="">复制上一条</a>
+			      </td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+
+		<!-- 分页 -->
+		<div id="pagation"></div>
+
+		<!-- 操作日志 -->
+		<div class="opration_log">
+			<div class="opration_log_title">操作日志：</div>
+			<div class="opration_log_list">
+				<ul>
+					<li>2018-09-12 10:10:18      操作人：*****     操作内容：“参数设置”币种选择（全部）、业务模块（全部）、指数偏差（1%）、累计收益率（10%）、单笔收益率（90%）、单日成交次数（20次）。</li>
+					<li>2018-09-12 10:10:18      操作人：*****     操作内容：“参数设置”币种选择（全部）、业务模块（全部）、指数偏差（1%）、累计收益率（10%）、单笔收益率（90%）、单日成交次数（20次）。</li>
+					<li>2018-09-12 10:10:18      操作人：*****     操作内容：“参数设置”币种选择（全部）、业务模块（全部）、指数偏差（1%）、累计收益率（10%）、单笔收益率（90%）、单日成交次数（20次）。</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+
+<script type="text/javascript">
+	layui.config({
+		base: '../../static/lay/modules/'
+	}).extend({
+		formSelects: 'formSelects'
+	})
+	layui.use(['jquery', 'layer', 'element', 'form', 'laydate', 'table', 'laypage', 'formSelects'], function(){
+		let $ = layui.$,
+			layer = layui.layer,
+			element = layui.element,
+			form = layui.form,
+			laydate = layui.laydate,
+			table = layui.table,
+			laypage = layui.laypage,
+			formSelects = layui.formSelects;
+
+		$(function () {
+			// 分页
+			laypage.render({
+				elem: 'pagation'
+				,count: 100
+				,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+				,jump: function(obj){
+				  console.log(obj)
+				}
+			});
+
+			// 删除当前数据弹框
+			$(document).on('click', '.opration_delete', function(event) {
+				event.preventDefault();
+				layer.open({
+					title: '删除',
+					skin: 'delete_dialog',
+					content: '确认删除当前数据！',
+					btn: ['删除', '取消'],
+					yes: function(index, layero){
+						$('.layui-layer-close').trigger('click');
+						// 删除操作
+					},
+					btn2: function () {
+						// 取消操作
+					}
+				});
+				$('.layui-layer-shade').css('background', 'none');
+			});
+				
+		})
+
+	})
+</script>
+	
+</body>
+</html>

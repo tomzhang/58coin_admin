@@ -2,6 +2,14 @@
 @import url('./css/formSelects.css');
 
 #frame_body{
+	
+}
+#thresholdSetting{
+	margin-top: 20px;
+    min-height: 600px;
+}
+
+.frame_padding {
 	padding: 15px;
 }
 
@@ -192,7 +200,6 @@
 
 /* 弹框 */
 .dialog_modal{
-	display: none;
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -241,7 +248,12 @@
 .dialog_modal_body{
 	min-height: 320px;
 	padding: 20px;
-	padding-bottom: 80px;
+	/* padding-bottom: 80px; */
+}
+.dialog_modal_body.add_set{
+	width: 700px;
+	margin: 0 auto;
+	margin-top: 40px;
 }
 .dialog_modal_body .layui-form-item .layui-input-inline{
 	width: 170px;
@@ -268,7 +280,7 @@
 	height: 80px;
 	line-height: 60px;
 	position: absolute;
-	bottom: 0;
+	/* bottom: 0; */
 	left: 0;
 	text-align: center;
 }

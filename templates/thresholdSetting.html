@@ -5,10 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>阈值设置</title>
 	<script type="text/javascript" src="../static/layui.js"></script>
-	<script type="text/javascript" src="../static/admin.js"></script>
 	<link rel="stylesheet" href="../static/admin.css" media="all">
 </head>
-<body>
+<body class="frame_padding">
 	<!-- 标题 -->
 	<fieldset class="layui-elem-field layui-field-title">
 	  <legend>阈值设置</legend>
@@ -17,16 +16,18 @@
 	<div class="layui-tab">
 		<!-- tab 切换 -->
 		<ul class="layui-tab-title tab_title">
-			<li class="layui-btn layui-btn-primary layui-this">币币</li>
-			<li class="layui-btn layui-btn-primary">数字合约</li>
-			<li class="layui-btn layui-btn-primary">USDT合约</li>
-			<li class="layui-btn layui-btn-primary">提币限额</li>
+			<li class="layui-btn layui-btn-primary layui-this set_type">币币</li>
+			<li class="layui-btn layui-btn-primary set_type">数字合约</li>
+			<li class="layui-btn layui-btn-primary set_type">USDT合约</li>
+			<li class="layui-btn layui-btn-primary set_type">提币限额</li>
 		</ul>
 
-		<button class="layui-btn btn_add_set">新增设置</button>
+		<button class="layui-btn btn_add_set" data-type="0">新增设置</button>
+
+		<iframe id="thresholdSetting" src="./thresholdSetting/tab1.html" frameborder="0" width="100%" height="100%"></iframe>
+
 		<!-- 显示结果 -->
-		<div class="result-list tab_result">
-			<!-- 今日申请：1000条     今日自动提币已通过：600条   历史申请：1000条   历史自动提币已通过：600条      -->
+		<!-- <div class="result-list tab_result">
 			<ul>
 				<li class="layui-text">今日申请：1000条</li>
 				<li class="layui-text">今日自动提币已通过：600条</li>
@@ -35,24 +36,11 @@
 				<li class="layui-text">累计收益率：90%</li>
 				<li class="layui-text">累计收益量：100BTC</li>
 			</ul>
-		</div>
+		</div> -->
 		<div class="layui-tab-content">
 			<!-- 币币 -->
-			<div class="layui-tab-item layui-show">
+			<!-- <div class="layui-tab-item layui-show">
 				<table class="layui-table">
-				  <colgroup>
-				    <col width="70">
-				    <col width="150">
-				    <col width="200">
-				    <col width="200">
-				    <col width="200">
-				    <col width="200">
-				    <col width="100">
-				    <col width="150">
-				    <col width="200">
-				    <col>
-				  </colgroup>
-				  <!-- 序号 币对 单日成交量 单日成交次数 单日下单次数 下单时间间隔 当前状态 设置人 设置时间 操作 -->
 				  <thead>
 				    <tr>
 				      <th>序号</th>
@@ -100,28 +88,11 @@
 				    </tr>
 				  </tbody>
 				</table>
-			</div>
+			</div> -->
 
 			<!-- 数字合约 -->
-			<div class="layui-tab-item">
+			<!-- <div class="layui-tab-item">
 				<table class="layui-table">
-				  <colgroup>
-				    <col width="70">
-				    <col width="100">
-				    <col width="150">
-				    <col width="170">
-				    <col width="170">
-				    <col width="170">
-				    <col width="170">
-				    <col width="170">
-				    <col width="170">
-				    <col width="170">
-				    <col width="150">
-				    <col width="150">
-				    <col width="170">
-				    <col width="200">
-				  </colgroup>
-				  <!-- 序号 币对 单日成交量 单日成交次数 单日下单次数 累计收益率 累计收益量 单笔收益率 下单时间间隔 指数偏差率 当前状态 设置人 设置时间 操作 -->
 				  <thead>
 				    <tr>
 				      <th>序号</th>
@@ -181,28 +152,11 @@
 				    </tr>
 				  </tbody>
 				</table>
-			</div>
+			</div> -->
 
 			<!-- USDT合约 -->
-			<div class="layui-tab-item">
+			<!-- <div class="layui-tab-item">
 				<table class="layui-table">
-				  <colgroup>
-				    <col width="70">
-				    <col width="100">
-				    <col width="150">
-				    <col width="170">
-				    <col width="170">
-				    <col width="170">
-				    <col width="170">
-				    <col width="170">
-				    <col width="170">
-				    <col width="170">
-				    <col width="150">
-				    <col width="150">
-				    <col width="170">
-				    <col width="200">
-				  </colgroup>
-				  <!-- 序号 币对 单日成交量 单日成交次数 单日下单次数 累计收益率 累计收益量 单笔收益率 下单时间间隔 指数偏差率 当前状态 设置人 设置时间 操作 -->
 				  <thead>
 				    <tr>
 				      <th>序号</th>
@@ -262,24 +216,11 @@
 				    </tr>
 				  </tbody>
 				</table>
-			</div>
+			</div> -->
 
 			<!-- 提币限额 -->
-			<div class="layui-tab-item">
+			<!-- <div class="layui-tab-item">
 				<table class="layui-table">
-				  <colgroup>
-				    <col width="70">
-				    <col width="150">
-				    <col width="200">
-				    <col width="200">
-				    <col width="250">
-				    <col width="250">
-				    <col width="100">
-				    <col width="150">
-				    <col width="200">
-				    <col width="200">
-				  </colgroup>
-				  <!-- 序号 币种 提现单次限额 提现单日限额 OTC转账单次限额 OTC转账单日限额 当前状态 设置人 设置时间 操作 -->
 				  <thead>
 				    <tr>
 				      <th>序号</th>
@@ -327,14 +268,14 @@
 				    </tr>
 				  </tbody>
 				</table>
-			</div>
+			</div> -->
 		</div>
 
 		<!-- 分页 -->
-		<div id="pagation"></div>
+		<!-- <div id="pagation"></div> -->
 
 		<!-- 操作日志 -->
-		<div class="opration_log">
+		<!-- <div class="opration_log">
 			<div class="opration_log_title">操作日志：</div>
 			<div class="opration_log_list">
 				<ul>
@@ -343,12 +284,12 @@
 					<li>2018-09-12 10:10:18      操作人：*****     操作内容：“参数设置”币种选择（全部）、业务模块（全部）、指数偏差（1%）、累计收益率（10%）、单笔收益率（90%）、单日成交次数（20次）。</li>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 
 	</div>
 
 	<!-- 新增/编辑币币弹框 -->
-	<div class="dialog_modal">
+	<!-- <div class="dialog_modal">
 		<div class="dialog_modal_fix">
 			<div class="dialog_modal_container">
 				<div class="dialog_modal_header">
@@ -429,7 +370,61 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+
+<script type="text/javascript">
+	layui.config({
+		base: '../static/lay/modules/'
+	}).extend({
+		formSelects: 'formSelects'
+	})
+	layui.use(['jquery', 'layer', 'element', 'form', 'laydate', 'table', 'laypage', 'formSelects'], function(){
+		let $ = layui.$,
+			layer = layui.layer,
+			element = layui.element,
+			form = layui.form,
+			laydate = layui.laydate,
+			table = layui.table,
+			laypage = layui.laypage,
+			formSelects = layui.formSelects;
+
+		let $frame = document.getElementsByTagName("iframe")[0];
+
+		$(function () {
+				// tab切换
+				$('.set_type').on('click', function(e) {
+					e.preventDefault();
+					let index = $(this).index();
+					$('.btn_add_set').data('type', index);
+					switch(index) {
+						case 0:
+							// 币币
+							$frame.src = './thresholdSetting/tab1.html';
+							break;
+						case 1:
+							// 数字合约
+							$frame.src = './thresholdSetting/tab2.html';
+							break;
+						case 2:
+							// USDT合约
+							$frame.src = './thresholdSetting/tab3.html';
+							break;
+						case 3:
+							// 提币限额
+							$frame.src = './thresholdSetting/tab4.html';
+							break;
+					}
+				});
+				// 新增设置
+				$('.btn_add_set').on('click', function(event) {
+					event.preventDefault();
+					let index = $('.btn_add_set').data('type');
+					$frame.src = './thresholdSetting/add_set.html?type=' + index;
+				});
+			})
+
+	})
+</script>
 
 </body>
 </html>
