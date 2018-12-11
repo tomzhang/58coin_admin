@@ -362,6 +362,46 @@
 	width: 150px;
 }
 
+.login_container{
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, .1);
+	display: flex;
+	align-items: center;
+    justify-content:center;
+}
+.login_body{
+	width: 400px;
+	height: auto;
+	background: #fff;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 10px #ccc;
+}
+.login_title{
+	line-height: 50px;
+	height: 50px;
+	text-align: center;
+	font-weight: 500;
+	font-size: 18px;
+	border-bottom: 1px solid #ededed;
+}
+.login_form{
+	padding: 30px 0px;
+}
+.layui-input-login{
+	padding: 0px 30px;
+}
+.login_submit{
+	width: 100%;
+}
+.input_error{
+	border-color: red;
+}
+
 
 
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>58Admin-登录</title>
+	<script type="text/javascript" src="../static/layui.js"></script>
+	<link rel="stylesheet" href="../static/admin.css" media="all">
+</head>
+<body>
+	<div class="login_container">
+		<div class="login_body">
+			<div class="login_title">
+				Admin登录
+			</div>
+			<form class="layui-form login_form">
+				<div class="layui-form-item">
+				    <div class="layui-input-login">
+				      <input type="text" name="username" lay-verify="username" autocomplete="off" placeholder="请输入账号" class="layui-input" maxlength="11">
+				    </div>
+			  	</div>
+			  	<div class="layui-form-item">
+				    <div class="layui-input-login">
+				      <input type="password" name="password" lay-verify="password" autocomplete="off" placeholder="请输入密码" class="layui-input">
+				    </div>
+			  	</div>
+			  	<div class="layui-form-item">
+				    <div class="layui-input-login">
+				      <input type="text" name="code" lay-verify="code" autocomplete="off" placeholder="请输入Google验证码" class="layui-input" maxlength="6">
+				    </div>
+			  	</div>
+			  	<input type="hidden" name="grant_type" value="password">
+			  	<div class="layui-form-item">
+				    <div class="layui-input-login">
+			      		<button class="layui-btn login_submit">立即提交</button>
+				    </div>
+			  	</div>
+			</form>
+		</div>
+	</div>
+
+
+<script type="text/javascript">
+	layui.config({
+		base: '../static/lay/modules/'
+	}).extend({
+		formSelects: 'formSelects'
+	})
+	layui.use(['jquery', 'layer', 'element', 'form', 'laydate', 'table', 'laypage', 'formSelects'], function(){
+		let $ = layui.$,
+			layer = layui.layer,
+			element = layui.element,
+			form = layui.form,
+			laydate = layui.laydate,
+			table = layui.table,
+			laypage = layui.laypage,
+			formSelects = layui.formSelects;
+
+		$(function () {
+			$('input').focus(function(event) {
+				$(event.target).removeClass('input_error');
+			});
+			// 前端校验
+			$('.login_submit').on('click', function(event) {
+				event.preventDefault();
+				if (!$('input[name="username"]').val()) {
+					dialog('请输入账号！');
+					$('input[name="username"]').addClass('input_error');
+					return;
+				}
+				if (!$('input[name="password"]').val()) {
+					dialog('请输入密码!');
+					$('input[name="password"]').addClass('input_error');
+					return;
+				}
+				if (!$('input[name="code"]').val()) {
+					dialog('请输入Google验证码!');
+					$('input[name="code"]').addClass('input_error');
+					return;
+				}
+				let data = {
+					grant_type: $('input[name=grant_type]').val(),
+					username: $('input[name=username]').val(),
+					password: $('input[name=password]').val(),
+					code: $('input[name=code]').val() 
+				}
+				// 提交url地址
+				let url = '';
+				$.ajax({  
+				   url: url,  
+				   dataType: 'json',  
+				   type: 'POST',  
+				   data: data,
+				   // 设置header头信息
+				   beforeSend: function (xhr) {  
+				       xhr.setRequestHeader("Authorization", "Basic" + "YWNtZTpzZWNyZXQ");  
+				   },   
+				   success: function (res) {  
+				   		console.log(res);
+				   }  
+				});
+			});
+			// 错误提示
+			function dialog(text){
+				layer.msg(text, {
+				  offset: 'c',
+				  anim: 6
+				});
+			}
+		})
+	})
+</script>
+	
+</body>
+</html>
