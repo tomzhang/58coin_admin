@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>数字合约</title>
+	<script type="text/javascript" src="../../static/layui.js"></script>
+	<link rel="stylesheet" href="../../static/admin.css" media="all">
+</head>
+<body>
+	<div class="layui-tab-content">
+		<!-- 数字合约 -->
+		<div class="layui-tab-item layui-show">
+			<div class="layui-tab">
+				<ul class="layui-tab-title tab_title tab_second_title">
+					<li class="layui-btn layui-btn-primary layui-this tab_item">下单记录</li>
+					<li class="layui-btn layui-btn-primary tab_item">成交记录</li>
+					<li class="layui-btn layui-btn-primary tab_item">资金记录</li>
+				</ul>
+				<div class="div_line"></div>
+				<div class="layui-tab-content">
+					<iframe id="data_tab_1" src="" frameborder="0" width="100%" height="100%"></iframe>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+<script type="text/javascript">
+	layui.config({
+		base: '../../static/lay/modules/'
+	}).extend({
+		formSelects: 'formSelects'
+	})
+	layui.use(['jquery', 'layer', 'element', 'form', 'laydate', 'table', 'laypage', 'formSelects'], function(){
+		let $ = layui.$,
+			layer = layui.layer,
+			element = layui.element,
+			form = layui.form,
+			laydate = layui.laydate,
+			table = layui.table,
+			laypage = layui.laypage,
+			formSelects = layui.formSelects;
+
+		let $frame = document.getElementsByTagName("iframe")[0];
+
+		$(function () {
+			// 判断加载哪个界面
+			$frame.src = './tab_2_1.html?type=0';
+			$('.tab_item').on('click', function(event) {
+				event.preventDefault();
+				let index = $(this).index() + 1;
+				let url = './tab_2_' + index + '.html?type=' + index;
+				$frame.src = url;
+			});
+		})
+
+	})
+</script>
+	
+</body>
+</html>
