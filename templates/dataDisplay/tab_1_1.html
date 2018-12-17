@@ -47,7 +47,7 @@
 				<label class="layui-form-label display_select_more">币对选择：</label>
 				<div class="layui-input-inline" style="width: 200px;">
 					<select xm-select="select_more" name="carrucy">
-						<option value="">全部</option>
+						<!-- <option value="">全部</option> -->
 						<option value="0">BTC</option>
 						<option value="1">ETH</option>
 						<option value="2">EOS</option>
@@ -168,7 +168,12 @@
 			// 查询
 			$('.btn_search').on('click', function(event) {
 				event.preventDefault();
-
+				let arr = formSelects.value('select_more');
+				let selects = [];
+				arr.forEach((v) => {
+					selects.push(v.value);
+				})
+				console.log(selects);
 			});
 
 			// 导出

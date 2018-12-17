@@ -89,6 +89,11 @@
 		</div>
 	</div>
 
+	<form id="page_forms" action="">
+		<input type="hidden" name="limit">
+		<input type="hidden" name="curr">
+	</form>
+
 
 <script type="text/javascript">
 	layui.config({
@@ -106,15 +111,30 @@
 			laypage = layui.laypage,
 			formSelects = layui.formSelects;
 
+		// 分页
+		laypage.render({
+			elem: 'pagation'
+			,count: 400
+			,limit: 20
+			,limits: [20, 50, 100]
+			,curr: 3
+			,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+			,jump: function(obj, first){
+				$('#page_forms input[name=limit]').val(obj.limit);
+				$('#page_forms input[name=curr]').val(obj.curr);
+			}
+		});
+
 		$(function () {
-			// 分页
-			laypage.render({
-				elem: 'pagation'
-				,count: 100
-				,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-				,jump: function(obj){
-				  console.log(obj)
-				}
+			// 翻页
+			$('#pagation a, #pagation button').on('click', function(event) {
+				event.preventDefault();
+				$('#page_forms').submit();
+			});
+			// 更改页面显示条数
+			$('.layui-laypage-limits select').on('change', function(event) {
+				event.preventDefault();
+				$('#page_forms').submit();
 			});
 
 			// 删除当前数据弹框
