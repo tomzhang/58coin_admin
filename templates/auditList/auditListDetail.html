@@ -1,157 +1,291 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>审核列表详情</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>审核列表详情</title>
     <script type="text/javascript" src="../../../static/layui.js"></script>
     <link rel="stylesheet" href="../../../static/admin.css" media="all">
 </head>
-<body class="frame_padding">
-	<!-- 标题 -->
-	<fieldset class="layui-elem-field layui-field-title">
-	  <legend><a class="go_list" href="javascript:;">审核列表<a> / <small>查看</small></legend>
+
+<body class="frame_padding" style="min-width: 1100px;">
+    <!-- 标题 -->
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend><a class="go_list" href="javascript:;">审核列表<a> / <small>查看</small></legend>
 	</fieldset>
-
-	<!-- 提现记录 -->
-	<div class="opration_log">
-		<div class="opration_log_title">提现记录：<span class="total_right">提币总量：2.3456789BTC</span></div>
-		<table class="layui-table">
-		  <colgroup>
-		    <col width="70">
-		    <col width="100">
-		    <col width="150">
-		    <col width="170">
-		    <col width="170">
-		    <col width="170">
-		    <col width="170">
-		  </colgroup>
-		  <!-- 序号 提现 金额 IP地址 提现时间 操作 状态 -->
-		  <thead>
-		    <tr>
-		      <th>序号</th>
-		      <th>提现</th>
-		      <th>金额</th>
-		      <th>IP地址</th>
-		      <th>提现时间</th>
-		      <th>操作</th>
-		      <th>状态</th>
-		    </tr> 
-		  </thead>
-		  <tbody>
-		    <tr>
-		      <td>1</td>
-		      <td>100BTC</td>
-		      <td>123</td>
-		      <td>11.22.33.11</td>
-		      <td>2018-9-9 11:11:11</td>
-		      <td>系统</td>
-		      <td>已通过</td>
-		    </tr>
-		    <tr>
-		      <td>2</td>
-		      <td>100BTC</td>
-		      <td>123</td>
-		      <td>11.22.33.11</td>
-		      <td>2018-9-9 11:11:11</td>
-		      <td>系统</td>
-		      <td class="dialog_red">已拒绝</td>
-		    </tr>
-		  </tbody>
-		</table>
-	</div>
-
-	<!-- 阈值检测 -->
-	<div class="opration_log">
-		<div class="opration_log_title">阈值检测：</div>
-		<table class="layui-table">
-		  <colgroup>
-		    <col width="70">
-		    <col width="100">
-		    <col width="150">
-		    <col width="170">
-		    <col width="170">
-		    <col width="170">
-		    <col width="170">
-		  </colgroup>
-		  <!-- 序号 业务模块 指标 日期 品种 详情 操作 -->
-		  <thead>
-		    <tr>
-		      <th>序号</th>
-		      <th>业务模块</th>
-		      <th>指标</th>
-		      <th>日期</th>
-		      <th>品种</th>
-		      <th>详情</th>
-		      <th>操作</th>
-		    </tr> 
-		  </thead>
-		  <tbody>
-		    <tr>
-		      <td>1</td>
-		      <td>100BTC</td>
-		      <td>123</td>
-		      <td>2018-9-9 11:11:11</td>
-		      <td class="dialog_red">BTCUSDT</td>
-		      <td>1000btc</td>
-		      <td>
-				<a class="go_detail" href="javascript:;" title="查看">查看</a>
-		      </td>
-		    </tr>
-		    <tr>
-		      <td>1</td>
-		      <td>100BTC</td>
-		      <td>123</td>
-		      <td>2018-9-9 11:11:11</td>
-		      <td class="dialog_red">BTCUSDT</td>
-		      <td>1000btc</td>
-		      <td>
-				<a class="go_detail" href="javascript:;" title="查看">查看</a>
-		      </td>
-		    </tr>
-		  </tbody>
-		</table>
-		<!-- 加载更多 -->
-    	<button class="layui-btn layui-btn-primary load_more">加载更多</button>
-	</div>
-
-<script type="text/javascript">
-    layui.config({
-        base: '../../static/lay/modules/'
-    }).extend({
-        formSelects: 'formSelects'
-    })
-    layui.use(['jquery', 'layer', 'element', 'form', 'laydate', 'table', 'laypage', 'formSelects'], function(){
-        let $ = layui.$,
-            layer = layui.layer,
-            element = layui.element,
-            form = layui.form,
-            laydate = layui.laydate,
-            table = layui.table,
-            laypage = layui.laypage,
-            formSelects = layui.formSelects;
-
-
-    	let host = 'http://' + window.location.host + '/templates/';
-
-
-        $(function () {
-        	// 查看详情 
-        	$(document).on('click', '.go_detail', function(event) {
-        		event.preventDefault();
-        		window.location.href = host + 'examineDetail.html';
-        	});
-
-            // 记载更多
-            $(document).on('click', '.load_more', function(event) {
-        		event.preventDefault();
-        		console.log('记载更多');
-        	});
-        })
-        
-
-    })
-</script>
 	
+	<div class="list_detail_left" style="width: 50%;float: left;">
+		<!-- 提现记录 -->
+		<div class="opration_log">
+			<div class="opration_log_title">提现记录：<span class="total_right">提币总量：2.3456789BTC</span></div>
+			<table class="layui-table">
+			  <colgroup>
+			    <col width="70">
+			    <col width="100">
+			    <col width="150">
+			    <col width="170">
+			    <col width="170">
+			    <col width="170">
+			    <col width="170">
+			  </colgroup>
+			  <!-- 序号 提现 金额 IP地址 提现时间 操作 状态 -->
+			  <thead>
+			    <tr>
+			      <th>序号</th>
+			      <th>提现</th>
+			      <th>金额</th>
+			      <th>IP地址</th>
+			      <th>提现时间</th>
+			      <th>操作</th>
+			      <th>状态</th>
+			    </tr> 
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>1</td>
+			      <td>100BTC</td>
+			      <td>123</td>
+			      <td>11.22.33.11</td>
+			      <td>2018-9-9 11:11:11</td>
+			      <td>系统</td>
+			      <td>已通过</td>
+			    </tr>
+			    <tr>
+			      <td>2</td>
+			      <td>100BTC</td>
+			      <td>123</td>
+			      <td>11.22.33.11</td>
+			      <td>2018-9-9 11:11:11</td>
+			      <td>系统</td>
+			      <td class="dialog_red">已拒绝</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+
+		<!-- 阈值检测 -->
+		<div class="opration_log">
+			<div class="opration_log_title">阈值检测：</div>
+			<table class="layui-table">
+			  <colgroup>
+			    <col width="70">
+			    <col width="100">
+			    <col width="150">
+			    <col width="170">
+			    <col width="170">
+			    <col width="170">
+			    <col width="170">
+			  </colgroup>
+			  <!-- 序号 业务模块 指标 日期 品种 详情 操作 -->
+			  <thead>
+			    <tr>
+			      <th>序号</th>
+			      <th>业务模块</th>
+			      <th>指标</th>
+			      <th>日期</th>
+			      <th>品种</th>
+			      <th>详情</th>
+			      <th>操作</th>
+			    </tr> 
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>1</td>
+			      <td>100BTC</td>
+			      <td>123</td>
+			      <td>2018-9-9 11:11:11</td>
+			      <td class="dialog_red">BTCUSDT</td>
+			      <td>1000btc</td>
+			      <td>
+					<a class="go_detail" href="javascript:;" title="查看">查看</a>
+            </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>100BTC</td>
+                <td>123</td>
+                <td>2018-9-9 11:11:11</td>
+                <td class="dialog_red">BTCUSDT</td>
+                <td>1000btc</td>
+                <td>
+                    <a class="go_detail" href="javascript:;" title="查看">查看</a>
+                </td>
+            </tr>
+            </tbody>
+            </table>
+            <!-- 加载更多 -->
+            <button class="layui-btn layui-btn-primary load_more">加载更多</button>
+        </div>
+    </div>
+    <div class="list_detail_right" style="width: 50%;float: left;">
+        <div class="layui-form">
+            <div class="layui-form-item dialog_margin_bottom">
+                <label class="layui-form-label dialog_label_width">订单ID:</label>
+                <div class="layui-form-mid">
+                    23456
+                </div>
+            </div>
+            <div class="layui-form-item dialog_margin_bottom">
+                <div class="layui-inline width_50">
+                    <label class="layui-form-label dialog_label_width">用户ID:</label>
+                    <div class="layui-form-mid">
+                        23456
+                    </div>
+                </div>
+                <div class="layui-inline width_50">
+                    <label class="layui-form-label dialog_label_width">注册时间:</label>
+                    <div class="layui-form-mid dialog_red">
+                        23456
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item dialog_margin_bottom">
+                <div class="layui-inline width_50">
+                    <label class="layui-form-label dialog_label_width">绑定邮箱:</label>
+                    <div class="layui-form-mid">
+                        762*******@qq.com
+                    </div>
+                </div>
+                <div class="layui-inline width_50">
+                    <label class="layui-form-label dialog_label_width">用户手机号:</label>
+                    <div class="layui-form-mid">
+                        18799994324（中国)
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item dialog_margin_bottom">
+                <label class="layui-form-label dialog_label_width">身份证号:</label>
+                <div class="layui-form-mid">
+                    370226********7119（宋凯）
+                </div>
+            </div>
+            <div class="layui-form-item dialog_margin_bottom">
+                <div class="layui-inline width_50">
+                    <label class="layui-form-label dialog_label_width">提现时间:</label>
+                    <div class="layui-form-mid">
+                        2018-09-09 12:12:12
+                    </div>
+                </div>
+                <div class="layui-inline width_50">
+                    <label class="layui-form-label dialog_label_width">提现数量:</label>
+                    <div class="layui-form-mid">
+                        0.5646BTC
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item dialog_margin_bottom">
+                <div class="layui-inline width_50">
+                    <label class="layui-form-label dialog_label_width">提币地址:</label>
+                    <div class="layui-form-mid">
+                        sdfwerdfg564fdg1ert656
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item dialog_margin_bottom">
+                <div class="layui-inline width_50">
+                    <label class="layui-form-label dialog_label_width">提现手续费率:</label>
+                    <div class="layui-form-mid">
+                        0.002
+                    </div>
+                </div>
+                <div class="layui-inline width_50">
+                    <label class="layui-form-label dialog_label_width">实收手续费:</label>
+                    <div class="layui-form-mid">
+                        0.00001BTC
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item dialog_margin_bottom">
+                <label class="layui-form-label dialog_label_width dialog_blod">敏感操作:</label>
+                <div class="layui-form-mid dialog_red">
+                    24小时内进行过【修改谷歌密钥】操作；
+                </div>
+            </div>
+            <div class="layui-form-item dialog_margin_bottom">
+                <label class="layui-form-label dialog_label_width"></label>
+                <div class="layui-form-mid dialog_red">
+                    24小时内进行过【修改交易密码】操作；
+                </div>
+            </div>
+            <div class="layui-form-item dialog_margin_bottom">
+                <label class="layui-form-label dialog_label_width"></label>
+                <div class="layui-form-mid dialog_red">
+                    24小时内进行过【修改邮箱】操作。
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label dialog_label_width dialog_blod">灰名单:</label>
+                <div class="layui-form-mid">
+                    无 <span class="dialog_red">(有    2018-09-01  12:30:10 ）</span>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label dialog_label_width dialog_blod">数额检测:</label>
+                <div class="layui-form-mid">
+                    正常 <span class="dialog_red">（0.9BTC数额过大）</span>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label dialog_label_width">备注:</label>
+                <div class="layui-input-block dialog_margin_left">
+                    <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text" style="text-align: center;margin-top: 30px;">
+                <button class="layui-btn">通过</button>
+                <button class="layui-btn layui-btn-primary">不通过</button>
+            </div>
+        </div>
+        <!-- 操作日志 -->
+        <div class="opration_log">
+            <div class="opration_log_title">操作日志：</div>
+            <div class="opration_log_list">
+                <ul>
+                    <li>2018-09-12 10:10:18 操作人：***** 操作内容：“参数设置”币种选择（全部）、业务模块（全部）、指数偏差（1%）、累计收益率（10%）、单笔收益率（90%）、单日成交次数（20次）。</li>
+                    <li>2018-09-12 10:10:18 操作人：***** 操作内容：“参数设置”币种选择（全部）、业务模块（全部）、指数偏差（1%）、累计收益率（10%）、单笔收益率（90%）、单日成交次数（20次）。</li>
+                    <li>2018-09-12 10:10:18 操作人：***** 操作内容：“参数设置”币种选择（全部）、业务模块（全部）、指数偏差（1%）、累计收益率（10%）、单笔收益率（90%）、单日成交次数（20次）。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+layui.config({
+    base: '../../static/lay/modules/'
+}).extend({
+    formSelects: 'formSelects'
+})
+layui.use(['jquery', 'layer', 'element', 'form', 'laydate', 'table', 'laypage', 'formSelects'], function() {
+    let $ = layui.$,
+        layer = layui.layer,
+        element = layui.element,
+        form = layui.form,
+        laydate = layui.laydate,
+        table = layui.table,
+        laypage = layui.laypage,
+        formSelects = layui.formSelects;
+
+
+    let host = 'http://' + window.location.host + '/templates/';
+
+
+    $(function() {
+        // 查看详情 
+        $(document).on('click', '.go_detail', function(event) {
+            event.preventDefault();
+            window.location.href = host + 'examineDetail.html';
+        });
+
+        // 记载更多
+        $(document).on('click', '.load_more', function(event) {
+            event.preventDefault();
+            console.log('记载更多');
+        });
+    })
+
+
+})
+</script>
 </body>
+
 </html>
