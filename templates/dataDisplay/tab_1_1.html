@@ -193,11 +193,7 @@
 				event.preventDefault();
 				let $active = $('.sort_th').find('.active').index();
 				let index = $active === -1 ? 1 : 0;
-				if ($active === 1) {
-					$(this).find('.sort_icon').removeClass('active');
-				} else {
-					$(this).find('.sort_icon').eq(index).removeClass('active').siblings().addClass('active');
-				}
+				$active === 1 ? $(this).find('.sort_icon').removeClass('active') : $(this).find('.sort_icon').eq(index).removeClass('active').siblings().addClass('active');
 			});
 			// 点击icon排序
 			$('.sort_icon').on('click', function(event) {
