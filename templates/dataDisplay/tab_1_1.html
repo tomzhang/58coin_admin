@@ -192,8 +192,9 @@
 			$('.sort_th').on('click', function(event) {
 				event.preventDefault();
 				let $active = $('.sort_th').find('.active').index();
-				let index = $active === -1 ? 1 : 0;
-				$active === 1 ? $(this).find('.sort_icon').removeClass('active') : $(this).find('.sort_icon').eq(index).removeClass('active').siblings().addClass('active');
+				let i = $active === -1 ? 1 : 0;
+				$active === 1 ? $(this).find('.sort_icon').removeClass('active') : $(this).find('.sort_icon').eq(i).removeClass('active').siblings().addClass('active');
+				console.log(i);
 			});
 			// 点击icon排序
 			$('.sort_icon').on('click', function(event) {
@@ -202,6 +203,8 @@
 				let $this = $(this);
 				let index = $('.active').index();
 				($this.hasClass('active') || $this.siblings().hasClass('active')) ? ($this.hasClass('active') ? $this.removeClass('active').siblings().addClass('active') : $this.addClass('active').siblings().removeClass('active')) : $this.addClass('active');
+				let i = $('.active').index() == 1 ? 0 : 1;
+				console.log(i);
 			});
 		})
 
