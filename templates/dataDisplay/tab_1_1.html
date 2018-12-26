@@ -46,7 +46,7 @@
 			<div class="layui-form-item layui-inline">
 				<label class="layui-form-label display_select_more">币对选择：</label>
 				<div class="layui-input-inline" style="width: 200px;">
-					<select xm-select="select_more" name="carrucy">
+					<select xm-select="select_more" xm-select-search name="carrucy">
 						<!-- <option value="">全部</option> -->
 						<option value="0">BTC</option>
 						<option value="1">ETH</option>
@@ -64,7 +64,13 @@
 		    <tr>
 		      <th>序号</th>
 		      <th>下单id</th>
-		      <th>下单时间</th>
+		      <th class="sort_th">
+		      	下单时间
+		      	<div class="sort_container">
+		      		<i class="sort_icon layui-edge"></i>
+		      		<i class="sort_icon layui-edge"></i>
+		      	</div>
+		      </th>
 		      <th>品种</th>
 		      <th>类型</th>
 		      <th>方向</th>
@@ -180,6 +186,26 @@
 			$('.btn_export').on('click', function(event) {
 				event.preventDefault();
 
+			});
+
+			// 点击header头排序
+			$('.sort_th').on('click', function(event) {
+				event.preventDefault();
+				let $active = $('.sort_th').find('.active').index();
+				let index = $active === -1 ? 1 : 0;
+				if ($active === 1) {
+					$(this).find('.sort_icon').removeClass('active');
+				} else {
+					$(this).find('.sort_icon').eq(index).removeClass('active').siblings().addClass('active');
+				}
+			});
+			// 点击icon排序
+			$('.sort_icon').on('click', function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+				let $this = $(this);
+				let index = $('.active').index();
+				($this.hasClass('active') || $this.siblings().hasClass('active')) ? ($this.hasClass('active') ? $this.removeClass('active').siblings().addClass('active') : $this.addClass('active').siblings().removeClass('active')) : $this.addClass('active');
 			});
 		})
 

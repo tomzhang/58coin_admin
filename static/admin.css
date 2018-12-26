@@ -422,6 +422,41 @@
 
 
 
+/* 排序箭头 */
+.sort_th{
+	cursor: pointer;
+}
+.sort_container{
+	width: 15px;
+	height: 20px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: -9px;
+	margin-left: 5px;
+}
+.layui-edge.sort_icon{
+	display: block;
+    cursor: pointer;
+    border-width: 6px;
+    border-top-color: #c2c2c2;
+    border-top-style: solid;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+}
+.layui-edge.sort_icon.active{
+	border-top-color: #464444;
+}
+.layui-edge.sort_icon:nth-child(1){
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg);
+	-moz-transform:rotate(180deg);
+	-webkit-transform:rotate(180deg);
+	-o-transform:rotate(180deg);
+	margin-bottom: 2px;
+}
+
+
+
 
 
 

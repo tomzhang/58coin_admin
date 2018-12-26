@@ -329,7 +329,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 	Common.prototype.search = function (id, e, searchUrl, call) {
 		var _this3 = this;
-
 		var input = void 0;
 		if (call) {
 			input = call;
@@ -340,7 +339,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 				return false;
 			}
 		}
-		var inputValue = $.trim(input.value);
+		// var inputValue = $.trim(input.value);
+		var inputValue = $.trim(input.value).toUpperCase();
 		//过滤一下tips
 		this.changePlaceHolder($(input));
 
