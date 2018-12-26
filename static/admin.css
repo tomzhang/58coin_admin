@@ -1,6 +1,15 @@
 @import url('./css/layui.css');
 @import url('./css/formSelects.css');
 
+/* 更改layui默认样式 */
+.layui-field-title{
+	margin: 0;
+	margin-bottom: 5px;
+}
+.result-list{
+	margin-top: -5px;
+}
+
 #frame_body{
 	
 }
