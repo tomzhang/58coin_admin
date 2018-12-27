@@ -1598,6 +1598,7 @@
       
       //清空、重置
       ,clear: function(){
+        that.config.value = '';
         that.setValue('').remove();
         isStatic && (
           lay.extend(dateTime, that.firstDate)
