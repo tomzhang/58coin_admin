@@ -23,7 +23,7 @@
 			</div>
 			<div class="layui-form-item layui-inline">
 				<div class="layui-input-inline time_range">
-					<input type="text" name="date" id="date_range" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+					<input type="text" name="date" id="date_range" lay-verify="date" placeholder="yyyyMMddHHmmss" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item layui-inline">
@@ -118,6 +118,7 @@
 		</table>
 		<!-- 分页 -->
 		<div id="pagation"></div>
+		<input type="hidden" id="hidden" name="" value="20181210111111 -- 20181215111812">
 	</div>
 
 <script type="text/javascript">
@@ -142,17 +143,17 @@
 			,count: 100
 			,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
 			,jump: function(obj){
-			  console.log(obj)
+			  // console.log(obj)
 			}
 		});
 
 		//日期
 		laydate.render({
 			elem: '#date_range',
-			range: true,
-			type: 'datetime',
+			range: '--',
+            format: 'yyyyMMddHHmmss',
 			// 设置默认值
-			// value: '2018-12-10 11:11:11 - 2018-12-15 11:18:12',
+			value: $('#hidden').val(),
 			done: function(value, date){
 				let type = date.year;
 			    // 禁用select
@@ -162,6 +163,7 @@
 			    } else {
 			    	$('#time').removeAttr('disabled');
 					form.render('select');
+					this.value = '';
 			    }
 			}
 		});
