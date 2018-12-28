@@ -20,7 +20,7 @@
 			<div class="layui-input-inline time">
 				<select id="time" name="time">
 					<option value="">请选择</option>
-					<option value="0" selected="">今天</option>
+					<option value="0">今天</option>
 					<option value="1">昨天</option>
 					<option value="2">明天</option>
 				</select>
@@ -46,9 +46,9 @@
 		<div class="layui-form-item layui-inline">
 			<label class="layui-form-label user_id">风控组</label>
 			<div class="layui-input-inline time">
-				<select id="time" name="time">
+				<select id="auditStatus2" name="time">
 					<option value="">请选择</option>
-					<option value="0" selected="">风控组1</option>
+					<option value="0">风控组1</option>
 					<option value="1">风控组2</option>
 					<option value="2">风控组3</option>
 				</select>
@@ -57,9 +57,9 @@
 		<div class="layui-form-item layui-inline">
 			<label class="layui-form-label time">客服</label>
 			<div class="layui-input-inline time">
-				<select id="time" name="time">
+				<select id="auditStatus1" name="time">
 					<option value="">请选择</option>
-					<option value="0" selected="">客服1</option>
+					<option value="0">客服1</option>
 					<option value="1">客服2</option>
 					<option value="2">客服3</option>
 				</select>
@@ -68,16 +68,16 @@
 		<div class="layui-form-item layui-inline">
 			<label class="layui-form-label time">状态</label>
 			<div class="layui-input-inline time">
-				<select id="time" name="time">
+				<select id="auditStatus" name="time">
 					<option value="">请选择</option>
-					<option value="0" selected="">状态1</option>
+					<option value="0">状态1</option>
 					<option value="1">状态2</option>
 					<option value="2">状态3</option>
 				</select>
 			</div>
 		</div>
 		<div class="layui-form-item layui-inline">
-			<button class="layui-btn layui-btn-normal">搜索</button>
+			<button class="layui-btn layui-btn-normal layui-btn-disabled">搜索</button>
 		</div>
 	</form>
 
@@ -214,6 +214,7 @@
 			}
 		});
 
+
 		$(function () {
 			// 审核
 			$(document).on('click', '.btn_examine', function (e) {
@@ -230,10 +231,45 @@
 			// 搜索
 			$('.layui-btn-normal').on('click', function(event) {
 				event.preventDefault();
-				$('form').submit();
+				!$(this).hasClass('layui-btn-disabled') ? $('form').submit() : $(this).addClass('layui-btn-disabled');
 			});
 
 		})
+
+		$(document).ready(function($) {
+			setTimeout(function() {
+				var d = 1;
+		        var auditStatusOptions = $('#auditStatus').find("option");
+		        for (var i = 0; i < auditStatusOptions.length; i++){
+		            if (Number(auditStatusOptions[i].value) === d){
+		                $(auditStatusOptions[i]).attr("selected", true)
+		                form.render('select');
+		                break;
+		            }
+		        }
+		        var d = 1;
+		        var auditStatusOptions = $('#auditStatus1').find("option");
+		        for (var i = 0; i < auditStatusOptions.length; i++){
+		            if (Number(auditStatusOptions[i].value) === d){
+		                $(auditStatusOptions[i]).attr("selected", true)
+		                form.render('select');
+		                break;
+		            }
+		        }
+		        var d = 1;
+		        var auditStatusOptions = $('#auditStatus2').find("option");
+		        for (var i = 0; i < auditStatusOptions.length; i++){
+		            if (Number(auditStatusOptions[i].value) === d){
+		                $(auditStatusOptions[i]).attr("selected", true)
+		                form.render('select');
+		                break;
+		            }
+		        }
+			},100)
+			setTimeout(function() {
+				$('.layui-btn-normal').removeClass('layui-btn-disabled');
+			},2000)
+		});
 		
 
 	})
