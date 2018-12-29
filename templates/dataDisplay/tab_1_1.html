@@ -13,7 +13,7 @@
 			<div class="layui-form-item layui-inline">
 				<label class="layui-form-label time">时间</label>
 				<div class="layui-input-inline time">
-					<select id="time" name="time">
+					<select id="times" name="time">
 						<option value="">请选择</option>
 						<option value="0" selected="">今天</option>
 						<option value="1">昨天</option>
@@ -158,12 +158,11 @@
 				let type = date.year;
 			    // 禁用select
 			    if (!!type) {
-			    	$('#time').attr('disabled', 'disabled');
+			    	$('#times').attr('disabled', 'disabled');
 					form.render('select');
 			    } else {
-			    	$('#time').removeAttr('disabled');
+			    	$('#times').removeAttr('disabled');
 					form.render('select');
-					this.value = '';
 			    }
 			}
 		});
@@ -173,6 +172,7 @@
 		formSelects.btns('select_more', []);
 
 		$(function () {
+			
 			// 查询
 			$('.btn_search').on('click', function(event) {
 				event.preventDefault();
@@ -209,6 +209,12 @@
 				console.log(i);
 			});
 		})
+
+		// 禁用选择
+		if (!!$('#date_range').val()) {
+			$('#times').attr('disabled', 'disabled');
+			form.render('select');
+		}
 
 	})
 </script>
