@@ -190,7 +190,10 @@
 
 			});
 
+			// 默认选中
+			let sort_index = !!1 ? 0 : 1;
 			// 点击header头排序
+			$('.sort_th').find('.sort_icon').eq(sort_index).addClass('active');
 			$('.sort_th').on('click', function(event) {
 				event.preventDefault();
 				let $active = $('.sort_th').find('.active').index();
