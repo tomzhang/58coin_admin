@@ -87,6 +87,7 @@
 				// 自动提币
 				form.on('switch(switch)', function (data) {
 					console.log(data.elem.checked);
+					$(data.othis).removeClass('layui-form-onswitch').find("em").text("关");
 				})
 			})
 
