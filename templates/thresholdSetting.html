@@ -13,13 +13,20 @@
 	  <legend>阈值设置</legend>
 	</fieldset>
 
-	<div class="layui-tab">
+	<div class="layui-tab layui-form">
 		<!-- tab 切换 -->
 		<ul class="layui-tab-title tab_title">
 			<li class="layui-btn layui-btn-primary layui-this set_type">币币</li>
 			<li class="layui-btn layui-btn-primary set_type">数字合约</li>
 			<li class="layui-btn layui-btn-primary set_type">USDT合约</li>
 			<li class="layui-btn layui-btn-primary set_type">提币限额</li>
+			<span style="display: inline-block;font-size: 14px;color: #333;vertical-align: middle;">
+			    <label class="layui-form-label">自动提币</label>
+				<div class="layui-input-block">
+					<!-- 选中状态添加  checked -->
+				    <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+				</div>
+			</span>
 		</ul>
 
 		<button class="layui-btn btn_add_set" data-type="0">新增设置</button>
