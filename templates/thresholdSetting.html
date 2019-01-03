@@ -24,7 +24,7 @@
 			    <label class="layui-form-label">自动提币</label>
 				<div class="layui-input-block">
 					<!-- 选中状态添加  checked -->
-				    <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+				    <input type="checkbox" name="close" lay-skin="switch" lay-filter="switch" lay-text="开|关">
 				</div>
 			</span>
 		</ul>
@@ -84,6 +84,10 @@
 					let index = $('.btn_add_set').data('type');
 					$frame.src = './thresholdSetting/add_set.html?type=' + index;
 				});
+				// 自动提币
+				form.on('switch(switch)', function (data) {
+					console.log(data.elem.checked);
+				})
 			})
 
 	})
