@@ -2,6 +2,9 @@
 @import url('./css/formSelects.css');
 
 /* 更改layui默认样式 */
+.layui-table-page{
+	text-align: right;
+}
 .layui-field-title{
 	margin: 0;
 	margin-bottom: 5px;

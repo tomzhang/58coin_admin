@@ -154,6 +154,8 @@
             format: 'yyyyMMddHHmmss',
 			// 设置默认值
 			value: $('#hidden').val(),
+			min: '2019-1-1',
+			max: '2019-1-21',
 			done: function(value, date){
 				let type = date.year;
 			    // 禁用select

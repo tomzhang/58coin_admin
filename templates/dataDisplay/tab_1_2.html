@@ -29,7 +29,7 @@
 			<div class="layui-form-item layui-inline">
 				<label class="layui-form-label user_id"><span style="color: red;">*</span>用户ID</label>
 				<div class="layui-input-inline">
-					<input type="text" name="name" lay-verify="name" placeholder="用户ID" autocomplete="off" class="layui-input">
+					<input type="text" id="id" name="name" lay-verify="name" placeholder="用户ID" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item layui-inline">
@@ -48,72 +48,30 @@
 				<button class="layui-btn layui-btn-primary btn_export">导出</button>
 			</div>
 		</form>
-		
-		<table class="layui-table">
+		<!-- url:'/demo/table/user/' -->
+		<table id="table_id" class="layui-table" lay-data="{height: 'full-200', cellMinWidth: 80, page: true, limit:10, url:'../../static/json/test.json'}">
 		  <thead>
 		    <tr>
-		      <th>序号</th>
-		      <th>成交单id</th>
-		      <th>品种</th>
-		      <th>类型</th>
-		      <th>方向</th>
-		      <th>成交价格</th>
-		      <th>成交量</th>
-		      <th>成交时间</th>
-		      <th class="dialog_red">成交金额</th>
-		      <th class="dialog_red">订单状态</th>
-		      <th>流动性</th>
-		      <th>手续费</th>
-		      <th>对手ID</th>
-		      <th>下单ID</th>
-		      <th>下单时间</th>
-		      <th>下单价格</th>
-		      <th>下单数量</th>
-		    </tr> 
+		      <th lay-data="{field:'test1', width:80, sort: true}">序号</th>
+		      <th lay-data="{field:'test2', width:180}">成交单id</th>
+		      <th lay-data="{field:'test3', width:80}">品种</th>
+		      <th lay-data="{field:'test4', width:80}">类型</th>
+		      <th lay-data="{field:'test5'}">方向</th>
+		      <th lay-data="{field:'test6', width:180}">成交价格</th>
+		      <th lay-data="{field:'test7', width:80}">成交量</th>
+		      <th lay-data="{field:'test8', width:180}">成交时间</th>
+		      <th lay-data="{field:'test9', width:135}">成交金额</th>
+		      <th lay-data="{field:'test10', width:135}">订单状态</th>
+		      <th lay-data="{field:'test11', width:135}">流动性</th>
+		      <th lay-data="{field:'test12', width:135}">手续费</th>
+		      <th lay-data="{field:'test13', width:135}">对手ID</th>
+		      <th lay-data="{field:'test14', width:135}">下单ID</th>
+		      <th lay-data="{field:'test15', width:135}">下单时间</th>
+		      <th lay-data="{field:'test16', width:135}">下单价格</th>
+		      <th lay-data="{field:'test17', width:135}">下单数量</th>
+		    </tr>
 		  </thead>
-		  <tbody>
-		    <tr>
-		      <td>1</td>
-		      <td>USDTBTC</td>
-		      <td>123</td>
-		      <td>123</td>
-		      <td>123</td>
-		      <td>234</td>
-		      <td>123</td>
-		      <td>123</td>
-		      <td>123</td>
-		      <td>234</td>
-		      <td>关闭</td>
-		      <td>某某某</td>
-		      <td>235</td>
-		      <td>234</td>
-		      <td>关闭</td>
-		      <td>某某某</td>
-		      <td>235</td>
-		    </tr>
-		    <tr>
-		      <td>2</td>
-		      <td>USDTBTC</td>
-		      <td>123</td>
-		      <td>123</td>
-		      <td>123</td>
-		      <td>234</td>
-		      <td>123</td>
-		      <td>123</td>
-		      <td>123</td>
-		      <td>234</td>
-		      <td>关闭</td>
-		      <td>某某某</td>
-		      <td>235</td>
-		      <td>234</td>
-		      <td>关闭</td>
-		      <td>某某某</td>
-		      <td>235</td>
-		    </tr>
-		  </tbody>
 		</table>
-		<!-- 分页 -->
-		<div id="pagation"></div>
 	</div>
 
 <script type="text/javascript">
@@ -131,16 +89,6 @@
 			table = layui.table,
 			laypage = layui.laypage,
 			formSelects = layui.formSelects;
-
-		// 分页
-		laypage.render({
-			elem: 'pagation'
-			,count: 100
-			,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-			,jump: function(obj){
-			  console.log(obj)
-			}
-		});
 
 		//日期
 		laydate.render({
@@ -167,10 +115,40 @@
 		formSelects.btns('select_more', []);
 
 		$(function () {
+			// 更改table的header颜色
+			$('.layui-form').find('th').each(function(i, el) {
+				if ($(el).data('field') == 'test9' || $(el).data('field') == 'test10') {
+					$(el).addClass('dialog_red')
+				}
+			});
 			// 查询
 			$('.btn_search').on('click', function(event) {
 				event.preventDefault();
 
+		      	table.reload('table_id', {
+			        page: {
+			          curr: 1 //重新从第 1 页开始
+			        }
+			        ,where: {
+			          time: $('#time').val(), // 时间
+			          id: $('#id').val() // 用户id
+			        }
+		      	});
+			});
+			// 重写排序
+			table.on('sort', function(obj){ 
+			  table.reload('table_id', {
+			    initSort: obj
+			    ,page: {
+		          curr: 1 //重新从第 1 页开始
+		        }
+			    ,where: {
+			      field: obj.field  // 排序的name
+			      ,order: obj.type  // 排序的类型 ，asc向上、desc向下
+			      ,time: $('#time').val()  // 时间
+		          ,id: $('#id').val()  // 用户id
+			    }
+			  });
 			});
 
 			// 导出
