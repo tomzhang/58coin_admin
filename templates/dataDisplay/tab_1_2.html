@@ -49,7 +49,7 @@
 			</div>
 		</form>
 		<!-- url:'/demo/table/user/' -->
-		<table id="table_id" class="layui-table" lay-data="{height: 'full-200', cellMinWidth: 80, page: true, limit:10, url:'../../static/json/test.json'}">
+		<table id="table_id" class="layui-table" lay-data="{height: '450', cellMinWidth: 80, page: true, limit:10, url:'../../static/json/test.json'}">
 		  <thead>
 		    <tr>
 		      <th lay-data="{field:'test1', width:80, sort: true}">序号</th>
@@ -124,6 +124,9 @@
 			// 查询
 			$('.btn_search').on('click', function(event) {
 				event.preventDefault();
+				// 存储搜索条件
+				let storage = {time: $('#date_range').val() || $('#time').val(), id: $('#id').val()};
+			    window.sessionStorage.setItem('storage', JSON.stringify(storage));
 
 		      	table.reload('table_id', {
 			        page: {

@@ -13,7 +13,7 @@
 			<div class="layui-form-item layui-inline">
 				<label class="layui-form-label time">时间</label>
 				<div class="layui-input-inline time">
-					<select id="times" name="time">
+					<select id="time" name="time">
 						<option value="">请选择</option>
 						<option value="0" selected="">今天</option>
 						<option value="1">昨天</option>
@@ -29,7 +29,7 @@
 			<div class="layui-form-item layui-inline">
 				<label class="layui-form-label user_id"><span style="color: red;">*</span>用户ID</label>
 				<div class="layui-input-inline">
-					<input type="text" name="name" lay-verify="name" placeholder="用户ID" autocomplete="off" class="layui-input">
+					<input type="text" id="id" name="name" lay-verify="name" placeholder="用户ID" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item layui-inline">
@@ -151,19 +151,19 @@
 		laydate.render({
 			elem: '#date_range',
 			range: '--',
-            format: 'yyyyMMddHHmmss',
+            // format: 'yyyyMMddHHmmss',
 			// 设置默认值
-			value: $('#hidden').val(),
+			value: window.sessionStorage.getItem('storage').time,
 			min: '2019-1-1',
 			max: '2019-1-21',
 			done: function(value, date){
 				let type = date.year;
 			    // 禁用select
 			    if (!!type) {
-			    	$('#times').attr('disabled', 'disabled');
+			    	$('#time').attr('disabled', 'disabled');
 					form.render('select');
 			    } else {
-			    	$('#times').removeAttr('disabled');
+			    	$('#time').removeAttr('disabled');
 					form.render('select');
 			    }
 			}
@@ -174,7 +174,16 @@
 		formSelects.btns('select_more', []);
 
 		$(function () {
-			
+			let storage = JSON.parse(window.sessionStorage.getItem('storage'));
+			$('#id').val(storage.id)
+			if (storage.time.length > 1) {
+				$('#date_range').val(storage.time);
+				$('#time').attr('disabled', 'disabled');
+				form.render('select');
+			} else {
+				var select = 'dd[lay-value=' + storage.time + ']';
+				$('#time').siblings("div.layui-form-select").find('dl').find(select).click();
+			}
 			// 查询
 			$('.btn_search').on('click', function(event) {
 				event.preventDefault();

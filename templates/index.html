@@ -80,6 +80,7 @@
 				$('.item-page').on('click', function(e) {
 					e.preventDefault();
 					let index = $(this).index();
+					window.sessionStorage.clear();
 					switch(index) {
 						case 0:
 							// 审核列表
