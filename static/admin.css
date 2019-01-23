@@ -1,8 +1,6 @@
 @import url('./css/layui.css');
 @import url('./css/formSelects.css');
-html, body,.layui-tab-item{
-	height: 100%;
-}
+
 /* 更改layui默认样式 */
 .layui-table-page{
 	text-align: right;

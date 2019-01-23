@@ -35,7 +35,7 @@
 			<div class="layui-form-item layui-inline">
 				<label class="layui-form-label display_select_more">订单状态</label>
 				<div class="layui-input-inline time">
-					<select id="time" name="time">
+					<select id="status" name="time">
 						<option value="">请选择</option>
 						<option value="0" selected="">已成交</option>
 						<option value="1">未成交</option>
@@ -151,9 +151,7 @@
 		laydate.render({
 			elem: '#date_range',
 			range: '--',
-            // format: 'yyyyMMddHHmmss',
-			// 设置默认值
-			value: window.sessionStorage.getItem('storage').time,
+            format: 'yyyyMMddHHmmss',
 			min: '2019-1-1',
 			max: '2019-1-21',
 			done: function(value, date){
@@ -175,14 +173,21 @@
 
 		$(function () {
 			let storage = JSON.parse(window.sessionStorage.getItem('storage'));
-			$('#id').val(storage.id)
-			if (storage.time.length > 1) {
-				$('#date_range').val(storage.time);
-				$('#time').attr('disabled', 'disabled');
+			if (!!storage) {
+				$('#id').val(storage.id)
+				if (storage.time.length > 1) {
+					$('#date_range').val(storage.time);
+					$('#time').attr('disabled', 'disabled');
+					form.render('select');
+				} else {
+					var select = 'dd[lay-value=' + storage.time + ']';
+					$('#time').siblings("div.layui-form-select").find('dl').find(select).click();
+				}
+			}
+			// 禁用选择
+			if (!!$('#date_range').val()) {
+				$('#times').attr('disabled', 'disabled');
 				form.render('select');
-			} else {
-				var select = 'dd[lay-value=' + storage.time + ']';
-				$('#time').siblings("div.layui-form-select").find('dl').find(select).click();
 			}
 			// 查询
 			$('.btn_search').on('click', function(event) {
@@ -192,7 +197,10 @@
 				arr.forEach((v) => {
 					selects.push(v.value);
 				})
-				console.log(selects);
+
+				// 存储搜索条件
+				let storage = {time: $('#date_range').val() || $('#time').val(), id: $('#id').val()};
+			    window.sessionStorage.setItem('storage', JSON.stringify(storage));
 			});
 
 			// 导出
@@ -223,12 +231,6 @@
 				console.log(i);
 			});
 		})
-
-		// 禁用选择
-		if (!!$('#date_range').val()) {
-			$('#times').attr('disabled', 'disabled');
-			form.render('select');
-		}
 
 	})
 </script>
