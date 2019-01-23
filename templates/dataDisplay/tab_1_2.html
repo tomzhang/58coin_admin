@@ -59,7 +59,7 @@
 		      <th lay-data="{field:'test5'}">方向</th>
 		      <th lay-data="{field:'test6', width:180}">成交价格</th>
 		      <th lay-data="{field:'test7', width:80}">成交量</th>
-		      <th lay-data="{field:'test8', width:180}">成交时间</th>
+		      <th lay-data="{field:'test8',width:180, templet: function(t) {return layui.util.toDateString(Number(t.test8));}}">成交时间</th>
 		      <th lay-data="{field:'test9', width:135}">成交金额</th>
 		      <th lay-data="{field:'test10', width:135}">订单状态</th>
 		      <th lay-data="{field:'test11', width:135}">流动性</th>
