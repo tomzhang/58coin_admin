@@ -113,6 +113,14 @@
 			type: 'datetime',
 			done: function(value, date){
 				let type = date.year;
+				if (!!value) {
+					if (!date.hours && !date.minutes && !date.seconds) {
+						value = value.split('--')[0] + '-- ' + (Number((value.split('--')[1])) + 235959);
+					} else {
+						value = value.split('--')[0] + '-- ' + Math.floor(Number((value.split('--')[1]))/100)*100;
+					}
+				}
+				setTimeout(function(){$('#date_range').val(value);},100)
 			    // 禁用select
 			    if (!!type) {
 			    	$('#time').attr('disabled', 'disabled');
