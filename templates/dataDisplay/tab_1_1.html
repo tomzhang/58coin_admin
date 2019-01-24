@@ -152,8 +152,8 @@
 			elem: '#date_range',
 			range: '--',
             format: 'yyyyMMddHHmmss',
-			min: '2019-1-1',
-			max: '2019-1-21',
+			min: layui.util.toDateString(1548145877000),
+			max: layui.util.toDateString(1548145877000 + 518400000),
 			done: function(value, date){
 				let type = date.year;
 			    // 禁用select
