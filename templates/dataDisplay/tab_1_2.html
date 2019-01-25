@@ -137,6 +137,9 @@
 		formSelects.btns('select_more', []);
 
 		$(function () {
+			let height = document.documentElement.clientHeight - 150;
+			$('.layui-table-view').height(height + 'px').find('.layui-table-body').height(height-75 + 'px');
+			
 			let storage = JSON.parse(window.sessionStorage.getItem('storage'));
 			if (!!storage) {
 				$('#id').val(storage.id)
@@ -156,6 +159,10 @@
 			        ,where: {
 			          time: $('#date_range').val() || $('#time').val(), // 时间
 			          id: $('#id').val() // 用户id
+			        },
+			        done: function () {
+						let height = document.documentElement.clientHeight - 150;
+						$('.layui-table-view').height(height + 'px').find('.layui-table-body').height(height-75 + 'px');
 			        }
 		      	});
 			}
@@ -188,6 +195,8 @@
 			          id: $('#id').val(), // 用户id
 			        }
 		      	});
+				let height = document.documentElement.clientHeight - 150;
+				$('.layui-table-view').height(height + 'px').find('.layui-table-body').height(height-75 + 'px');
 			});
 			// 重写排序
 			table.on('sort', function(obj){ 

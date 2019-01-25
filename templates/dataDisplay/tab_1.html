@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>币币交易</title>
 	<script type="text/javascript" src="../../static/layui.js"></script>
+	<script type="text/javascript" src="../../static/frame.js"></script>
 	<link rel="stylesheet" href="../../static/admin.css" media="all">
 </head>
 <body>
@@ -47,6 +48,7 @@
 		let $frame = document.getElementsByTagName("iframe")[0];
 
 		$(function () {
+	        frameHeight('data_tab_1', 110);
 			// 判断加载哪个界面
 			$frame.src = './tab_1_1.html?type=0';
 			$('.tab_item').on('click', function(event) {
