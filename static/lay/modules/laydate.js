@@ -991,7 +991,7 @@
         return hms;
       }())).getTime();  //time：是否比较时分秒
     });
-    
+    timestrap.max = Number(timestrap.max) % 10000 > 0 ? timestrap.max : timestrap.max + 86399000;
     isOut = timestrap.now < timestrap.min || timestrap.now > timestrap.max;
     elem && elem[isOut ? 'addClass' : 'removeClass'](DISABLED);
     return isOut;
